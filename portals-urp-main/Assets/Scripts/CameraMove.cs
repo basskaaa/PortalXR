@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class CameraMove : MonoBehaviour
 {
-    private const float moveSpeed = 7.5f;
+    private const float moveSpeed = 0f;
     private const float cameraSpeed = 3.0f;
 
     public Quaternion TargetRotation { private set; get; }

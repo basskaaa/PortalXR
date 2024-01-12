@@ -23,6 +23,7 @@ public class PortalCamera : MonoBehaviour
 
     private void Awake()
     {
+        //mainCamera = GetComponentInChildren<Camera>();
         mainCamera = GetComponent<Camera>();
 
         tempTexture1 = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.ARGB32);
