@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+//[RequireComponent(typeof(Rigidbody))]
 public class CameraMove : MonoBehaviour
 {
     private const float moveSpeed = 0f;
@@ -15,6 +15,7 @@ public class CameraMove : MonoBehaviour
 
     private new Rigidbody rigidbody;
 
+    /*
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -50,8 +51,10 @@ public class CameraMove : MonoBehaviour
     {
         Vector3 newVelocity = transform.TransformDirection(moveVector);
         newVelocity.y += moveY * moveSpeed;
-        rigidbody.velocity = newVelocity;
+        //rigidbody.velocity = newVelocity;
     }
+
+    */
 
     public void ResetTargetRotation()
     {
