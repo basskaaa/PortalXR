@@ -59,7 +59,7 @@ public class Portal : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var obj = other.GetComponent<PortalableObject>();
-        if (obj != null)
+        if (obj != null && GameManager.Instance.bothPortalsActive)
         {
             portalObjects.Add(obj);
             obj.SetIsInPortal(this, OtherPortal, wallCollider);
@@ -70,7 +70,7 @@ public class Portal : MonoBehaviour
     {
         var obj = other.GetComponent<PortalableObject>();
 
-        if(portalObjects.Contains(obj))
+        if(portalObjects.Contains(obj)  && GameManager.Instance.bothPortalsActive)
         {
             portalObjects.Remove(obj);
             obj.ExitPortal(wallCollider);

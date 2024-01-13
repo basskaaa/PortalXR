@@ -16,6 +16,9 @@ public class PortalPlacement : MonoBehaviour
 
     private CameraMove cameraMove;
 
+    private bool inPortalActive;
+    private bool outPortalActive;
+
     private void Awake()
     {
         cameraMove = GetComponent<CameraMove>();
@@ -93,7 +96,24 @@ public class PortalPlacement : MonoBehaviour
             if(wasPlaced)
             {
                 crosshair.SetPortalPlaced(portalID, true);
+                CheckActivePortals(portalID);
             }
+        }
+    }
+
+    private void CheckActivePortals(int portalID)
+    { 
+        if (portalID == 0)
+        {
+            inPortalActive = true;
+        }
+        if (portalID == 1)
+        {
+            outPortalActive = true;
+        }
+        if (inPortalActive &&  outPortalActive)
+        {
+            GameManager.Instance.bothPortalsActive = true;
         }
     }
 }
