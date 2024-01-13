@@ -9,6 +9,8 @@ using UnityEngine;
 public class PortalableObject : MonoBehaviour
 {
     private GameObject cloneObject;
+    public GameObject lastPortalTf;
+    public float ceilingClippingLenth = 3f;
 
     private int inPortalCount = 0;
     
@@ -90,11 +92,18 @@ public class PortalableObject : MonoBehaviour
     {
         var inTransform = inPortal.transform;
         var outTransform = outPortal.transform;
+        lastPortalTf.transform.position = outPortal.transform.position;
 
         // Update position of object.
         Vector3 relativePos = inTransform.InverseTransformPoint(transform.position);
         relativePos = halfTurn * relativePos;
         transform.position = outTransform.TransformPoint(relativePos);
+
+        if (IsPortalOnCeiling())
+        {
+            Debug.Log("Ceiling portal");
+            transform.position = new Vector3 (transform.position.x, transform.position.y - ceilingClippingLenth, transform.position.z);
+        }
 
         // Update rotation of object.
         Quaternion relativeRot = Quaternion.Inverse(inTransform.rotation) * transform.rotation;
@@ -110,5 +119,14 @@ public class PortalableObject : MonoBehaviour
         var tmp = inPortal;
         inPortal = outPortal;
         outPortal = tmp;
+    }
+
+    public bool IsPortalOnCeiling()
+    {
+        if (outPortal.transform.rotation.x < 0)
+        {
+            return true;
+        }
+        else return false;
     }
 }

@@ -16,6 +16,7 @@ public class PortalPlacement : MonoBehaviour
 
     private CameraMove cameraMove;
 
+    public bool canPlacePortals;
     private bool inPortalActive;
     private bool outPortalActive;
 
@@ -26,11 +27,11 @@ public class PortalPlacement : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetButtonDown("Fire1") && canPlacePortals)
         {
             FirePortal(0, transform.position, transform.forward, 250.0f);
         }
-        else if (Input.GetButtonDown("Fire2"))
+        else if (Input.GetButtonDown("Fire2") && canPlacePortals)
         {
             FirePortal(1, transform.position, transform.forward, 250.0f);
         }
