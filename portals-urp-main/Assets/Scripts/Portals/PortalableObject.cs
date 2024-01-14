@@ -9,7 +9,7 @@ using UnityEngine;
 public class PortalableObject : MonoBehaviour
 {
     private GameObject cloneObject;
-    public GameObject lastPortalTf;
+    [HideInInspector] public GameObject lastPortalTf;
     public float ceilingClippingLenth = 3f;
 
     private int inPortalCount = 0;
@@ -92,7 +92,7 @@ public class PortalableObject : MonoBehaviour
     {
         var inTransform = inPortal.transform;
         var outTransform = outPortal.transform;
-        lastPortalTf.transform.position = outPortal.transform.position;
+        if (lastPortalTf != null) lastPortalTf.transform.position = outPortal.transform.position;
 
         // Update position of object.
         Vector3 relativePos = inTransform.InverseTransformPoint(transform.position);

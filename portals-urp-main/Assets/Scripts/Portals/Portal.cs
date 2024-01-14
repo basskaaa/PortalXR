@@ -61,6 +61,14 @@ public class Portal : MonoBehaviour
         var obj = other.GetComponent<PortalableObject>();
         if (obj != null && GameManager.Instance.bothPortalsActive)
         {
+            if (other.GetComponent<HoldableItem>() != null)
+            {
+                if (other.GetComponent<HoldableItem>().isHeld)
+                {
+                    return;
+                }
+            }
+
             portalObjects.Add(obj);
             obj.SetIsInPortal(this, OtherPortal, wallCollider);
         }
