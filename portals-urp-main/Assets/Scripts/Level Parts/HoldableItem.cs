@@ -5,9 +5,7 @@ using UnityEngine;
 public class HoldableItem : MonoBehaviour, IInteractable
 {
     private Transform holdPosition;
-    private Transform camera;
     private Rigidbody rigidbody;
-    private BoxCollider collider;
 
     [HideInInspector] public bool isHeld = false;
 
@@ -22,8 +20,6 @@ public class HoldableItem : MonoBehaviour, IInteractable
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        collider = GetComponent<BoxCollider>();
-        camera = FindObjectOfType<Interactor>().transform;
         holdPosition = FindObjectOfType<ItemHoldPosition>().transform;
     }
 
@@ -39,12 +35,12 @@ public class HoldableItem : MonoBehaviour, IInteractable
     {
         rigidbody.useGravity = false;
         gameObject.transform.position = holdPosition.position;
-        //gameObject.transform.SetParent(holdPosition);
+        gameObject.transform.SetParent(holdPosition);
     }
 
     private void SetDrop()
     {
         rigidbody.useGravity = true;
-        //gameObject.transform.SetParent(null);
+        gameObject.transform.SetParent(null);
     }
 }
