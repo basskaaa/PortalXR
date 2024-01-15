@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    [SerializeField]
-    private MovingPlatform_WaypointPath _waypointPath;
+    [SerializeField] private MovingPlatform_WaypointPath _waypointPath;
 
-    [SerializeField]
-    private float _speed;
+    [SerializeField] private float _speed;
+
+    [SerializeField] private bool isRepeating = true;
+    [SerializeField] private bool isActive = true;
 
     private int _targetWaypointIndex;
 
@@ -25,16 +26,19 @@ public class MovingPlatform : MonoBehaviour
 
     void FixedUpdate()
     {
-        _elapsedTime += Time.deltaTime;
-
-        float elapsedPercentage = _elapsedTime / _timeToWaypoint;
-        elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
-        transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
-        transform.rotation = Quaternion.Lerp(_previousWaypoint.rotation, _targetWaypoint.rotation, elapsedPercentage);
-
-        if (elapsedPercentage >= 1)
+        if (isActive)
         {
-            TargetNextWaypoint();
+            _elapsedTime += Time.deltaTime;
+
+            float elapsedPercentage = _elapsedTime / _timeToWaypoint;
+            elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
+            transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
+            transform.rotation = Quaternion.Lerp(_previousWaypoint.rotation, _targetWaypoint.rotation, elapsedPercentage);
+
+            if (elapsedPercentage >= 1 && isRepeating)
+            {
+                TargetNextWaypoint();
+            }
         }
     }
 
@@ -58,5 +62,10 @@ public class MovingPlatform : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         other.transform.SetParent(null);
+    }
+
+    public void ActivatePlatform()
+    {
+        isActive = true;
     }
 }
