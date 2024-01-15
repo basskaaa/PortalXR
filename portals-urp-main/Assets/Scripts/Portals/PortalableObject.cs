@@ -105,6 +105,12 @@ public class PortalableObject : MonoBehaviour
             transform.position = new Vector3 (transform.position.x, transform.position.y - ceilingClippingLenth, transform.position.z);
         }
 
+        if (FloorToWallPortal())
+        {
+            WarpFromFloorToWall();
+            return;
+        }
+
         // Update rotation of object.
         Quaternion relativeRot = Quaternion.Inverse(inTransform.rotation) * transform.rotation;
         relativeRot = halfTurn * relativeRot;
@@ -130,12 +136,38 @@ public class PortalableObject : MonoBehaviour
         else return false;
     }
 
-    //public bool IsPortalOnFloor()
-    //{
-    //    if (outPortal.transform.rotation.x > 0)
-    //    {
-    //        return true;
-    //    }
-    //    else return false;
-    //}
+    public bool FloorToWallPortal()
+    {
+        if (inPortal.transform.rotation.x > 0 && outPortal.transform.rotation.x == 0 || outPortal.transform.rotation.x == -180)
+        {
+            return true;
+        }
+        else return false;
+    }
+
+    public void WarpFromFloorToWall()
+    {
+        Transform WallPortal = outPortal.gameObject.GetComponentInChildren<PortalExitRotation>().transform;
+
+        // Update rotation of object.
+        transform.rotation = WallPortal.rotation;
+        //Debug.Log(outTransform.rotation);
+        Debug.Log("Exit floor to wall portal");
+
+        // Update velocity of rigidbody.
+        float downForce = rigidbody.velocity.magnitude;
+        if (rigidbody.velocity.magnitude < 15)
+        {
+            rigidbody.AddForce(WallPortal.forward * downForce * 300, ForceMode.Force);
+        }
+        else
+        {
+            rigidbody.AddForce(WallPortal.forward * downForce * 195, ForceMode.Force);
+        }
+
+        // Swap portal references.
+        var tmp = inPortal;
+        inPortal = outPortal;
+        outPortal = tmp;
+    }
 }

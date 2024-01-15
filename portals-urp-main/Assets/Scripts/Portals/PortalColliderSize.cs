@@ -29,8 +29,6 @@ public class PortalColliderSize : MonoBehaviour
         }
         else
         {
-            Debug.Log(playerRb.velocity);
-
             collider.size = new Vector3(size.x, size.y, fastSize);
         }
     }
