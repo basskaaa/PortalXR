@@ -101,7 +101,7 @@ public class PortalableObject : MonoBehaviour
 
         if (IsPortalOnCeiling())
         {
-            Debug.Log("Ceiling portal");
+            //Debug.Log("Ceiling portal");
             transform.position = new Vector3 (transform.position.x, transform.position.y - ceilingClippingLenth, transform.position.z);
         }
 
@@ -129,4 +129,13 @@ public class PortalableObject : MonoBehaviour
         }
         else return false;
     }
+
+    //public bool IsPortalOnFloor()
+    //{
+    //    if (outPortal.transform.rotation.x > 0)
+    //    {
+    //        return true;
+    //    }
+    //    else return false;
+    //}
 }

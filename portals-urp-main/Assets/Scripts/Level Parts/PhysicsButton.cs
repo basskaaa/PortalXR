@@ -15,31 +15,36 @@ public class PhysicsButton : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<Box>() != null || collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Button");
-            animator.SetBool("Pressed", true);
-            buttonPressed.Raise();
-        }
+        ButtonPressed(collision.gameObject);
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        ButtonPressed(collision.gameObject);
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.GetComponent<Box>() != null || collision.gameObject.CompareTag("Player"))
+        ButtonUnpressed(collision.gameObject);
+    }
+
+    private void ButtonPressed(GameObject collision)
+    {
+        if (collision.GetComponent<Box>() != null || collision.CompareTag("Player"))
         {
-            StartCoroutine(UnpressedDelay(collision.gameObject));
+            animator.SetBool("Pressed", true);
+            buttonPressed.Raise();
+            collision.transform.SetParent(transform);
         }
     }
 
-    private IEnumerator UnpressedDelay(GameObject collision)
+    private void ButtonUnpressed(GameObject collision)
     {
-        yield return new WaitForSeconds(0.1f);
-
         if (collision.GetComponent<Box>() != null || collision.CompareTag("Player"))
         {
-            Debug.Log("Button");
             animator.SetBool("Pressed", false);
             buttonUnpressed.Raise();
+            collision.transform.SetParent(null);
         }
     }
 }
