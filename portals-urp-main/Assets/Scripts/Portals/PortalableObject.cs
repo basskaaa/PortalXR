@@ -138,7 +138,10 @@ public class PortalableObject : MonoBehaviour
 
     public bool FloorToWallPortal()
     {
-        if (inPortal.transform.rotation.x > 0 && outPortal.transform.rotation.x == 0 || outPortal.transform.rotation.x == -180)
+        Debug.Log(inPortal.transform.rotation.x);
+        Debug.Log(outPortal.transform.rotation.x);
+
+        if (inPortal.transform.rotation.x > 0 && (outPortal.transform.rotation.x == 0 || outPortal.transform.rotation.x == 1))
         {
             return true;
         }
