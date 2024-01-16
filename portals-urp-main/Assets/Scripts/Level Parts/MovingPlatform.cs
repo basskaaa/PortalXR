@@ -56,12 +56,18 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.transform.SetParent(transform);
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Interactable"))
+        {
+            other.transform.SetParent(transform);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        other.transform.SetParent(null);
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Interactable"))
+        {
+            other.transform.SetParent(null);
+        }
     }
 
     public void ActivatePlatform()
