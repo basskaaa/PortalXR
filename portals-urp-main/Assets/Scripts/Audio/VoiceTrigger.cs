@@ -8,14 +8,17 @@ public class VoiceTrigger : MonoBehaviour
     [SerializeField] private bool isTriggerCollider = false;
     [SerializeField] private bool isEvent = false;
 
-    [SerializeField] private VoiceCilpHolder voiceHolder;
+    [SerializeField] private VoiceClipHolder voiceHolder;
+
+    private bool hasBeenPlayed = false;
 
     private void Start()
     {
-        if (isPlayOnStart) 
+        if (isPlayOnStart && !hasBeenPlayed) 
         {
             VoiceManager.Instance.AddVoiceLineToQueue(voiceHolder);
             Debug.Log("Trigger");
+            hasBeenPlayed = true;
         }
     }
 
@@ -24,14 +27,16 @@ public class VoiceTrigger : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && isTriggerCollider)
         {
             VoiceManager.Instance.AddVoiceLineToQueue(voiceHolder);
+            hasBeenPlayed = true;
         }
     }
 
     public void EventVoiceLine()
     {
-        if (isEvent) 
+        if (isEvent && !hasBeenPlayed) 
         {
             VoiceManager.Instance.AddVoiceLineToQueue(voiceHolder);
+            hasBeenPlayed = true;
         }
     }
 }

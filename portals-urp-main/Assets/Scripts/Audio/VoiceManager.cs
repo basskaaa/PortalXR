@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class VoiceManager : Singleton<VoiceManager>
 {
-    private List<AudioClip> voiceClipList = new List<AudioClip>();
-    private List<float> voiceClipDelayList = new List<float>();
+    private List<VoiceClipHolder> voiceHolders = new List<VoiceClipHolder>();
 
     private AudioSource voiceSource;
 
@@ -16,15 +15,17 @@ public class VoiceManager : Singleton<VoiceManager>
         voiceSource = GetComponent<AudioSource>();
     }
 
-    public void AddVoiceLineToQueue(VoiceCilpHolder voiceHolder)
+    public void AddVoiceLineToQueue(VoiceClipHolder voiceHolder)
     {
+        voiceHolders.Add(voiceHolder);
+
         if (!isPlaying)
         {
             StartCoroutine(PlayVoiceQueue(voiceHolder));
         }
     }
 
-    private IEnumerator PlayVoiceQueue(VoiceCilpHolder voiceHolder)
+    private IEnumerator PlayVoiceQueue(VoiceClipHolder voiceHolder)
     {
         isPlaying = true;
 
@@ -34,9 +35,19 @@ public class VoiceManager : Singleton<VoiceManager>
             voiceSource.Play();
             yield return new WaitWhile(() => voiceSource.isPlaying);
             Debug.Log(voiceHolder.VoiceLine[i].name);
-            yield return new WaitForSeconds(voiceHolder.VoiceLineDelay[i]);
-            Debug.Log(voiceHolder.VoiceLineDelay[i]);
+
+            if (voiceHolder.VoiceLineDelay.Length > 0)
+            {
+                yield return new WaitForSeconds(voiceHolder.VoiceLineDelay[i]);
+                Debug.Log(voiceHolder.VoiceLineDelay[i]);
+            }
         }
+        voiceHolders.Remove(voiceHolder);
         isPlaying = false;
+
+        if (voiceHolders.Count > 0) 
+        {
+            StartCoroutine(PlayVoiceQueue(voiceHolders[0]));
+        }
     }
 }

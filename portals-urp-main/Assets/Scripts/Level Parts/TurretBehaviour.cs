@@ -11,14 +11,15 @@ public class TurretBehaviour : MonoBehaviour
     private LineRenderer[] lineRenderers;
     private GameObject player;
 
+    [SerializeField] float aimDelay = 0.3f;
     [SerializeField] float waitToShoot = 1.5f;
-    [SerializeField] float fireRate = 1.5f;
+    [SerializeField] float fireRate = 0.1f;
     [SerializeField] float waitForTargetLost = 4f;
     [SerializeField] float bulletForce = 100f;
 
     private bool inFireRange = false;
     public bool isShooting = false;
-    [HideInInspector] public bool hasBeenDisplaced = false;
+    [HideInInspector] public bool isDisplaced = false;
 
     [SerializeField] private AudioClipHolder shootSound;
 
@@ -30,7 +31,7 @@ public class TurretBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (inFireRange && !hasBeenDisplaced)
+        if (inFireRange && !isDisplaced)
         {
             CheckAim();
         }
@@ -53,20 +54,29 @@ public class TurretBehaviour : MonoBehaviour
         }
     }
 
+    private bool isUpright()
+    {
+        if (transform.rotation.eulerAngles.x > 0.3 && transform.rotation.eulerAngles.x < 0.35)
+        {
+            return true;
+        }
+
+        else
+        {
+            Debug.Log(transform.rotation.eulerAngles.x);
+            return false;
+        }
+    }
+
     private void CheckAim()
     {
         if (Physics.Raycast(gameObject.transform.position, player.transform.position))
         {
             //Debug.Log("Hit");
 
-            for (int i = 0; i < 4; i++)
-            {
-                lineRenderers[i].enabled = true;
-                lineRenderers[i].SetPosition(0, guns[i].position);
-                lineRenderers[i].SetPosition(1, player.transform.position);
-            }
+            StartCoroutine(DrawLine());
 
-            if (!isShooting && !hasBeenDisplaced)
+            if (!isShooting && !isDisplaced)
             {
                 StartCoroutine(WaitToShoot());
             }
@@ -79,6 +89,20 @@ public class TurretBehaviour : MonoBehaviour
             {
                 line.enabled = false;
             }
+        }
+    }
+
+    private IEnumerator DrawLine()
+    {
+        Vector3 target = player.transform.position;
+
+        yield return new WaitForSeconds(aimDelay);
+
+        for (int i = 0; i < 4; i++)
+        {
+            lineRenderers[i].enabled = true;
+            lineRenderers[i].SetPosition(0, guns[i].position);
+            lineRenderers[i].SetPosition(1, target);
         }
     }
 
@@ -109,18 +133,13 @@ public class TurretBehaviour : MonoBehaviour
 
     private IEnumerator Shoot()
     {
-        if (inFireRange && GameManager.Instance.playerIsAlive)
+        if (inFireRange && GameManager.Instance.playerIsAlive && isUpright())
         {
             foreach (var gun in guns)
             {
                 AudioManager.Instance.PlaySound(shootSound.AudioClip, shootSound.Volume);
-                int i = 0;
-                Bullet(gun);
-                MuzzleFlash(gun);
-                // Deal damage
-                // Shoot sound
-                i++;
-                yield return new WaitForSeconds(0.1f);
+                StartCoroutine(Bullet(gun));
+                yield return new WaitForSeconds(fireRate);
             }
 
             StartCoroutine(Shoot());
@@ -134,11 +153,15 @@ public class TurretBehaviour : MonoBehaviour
         Destroy(clone, 0.4f);
     }
 
-    private void Bullet(Transform spawnPos)
+    private IEnumerator Bullet(Transform spawnPos)
     {
+        Vector3 target = player.transform.position;
+
+        yield return new WaitForSeconds(aimDelay);
+        MuzzleFlash(spawnPos);
         GameObject clone;
         clone = Instantiate(bullet, spawnPos.position, spawnPos.rotation);
-        clone.GetComponent<Rigidbody>().AddForce(-(spawnPos.position - player.transform.position) * bulletForce, ForceMode.Impulse);
+        clone.GetComponent<Rigidbody>().AddForce(-(spawnPos.position - target) * bulletForce, ForceMode.Impulse);
         Destroy(clone, 0.5f);
     }
 }

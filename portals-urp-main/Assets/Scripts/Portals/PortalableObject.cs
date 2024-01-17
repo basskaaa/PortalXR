@@ -134,11 +134,6 @@ public class PortalableObject : MonoBehaviour
         {
             rigidbody.AddForce(outPortal.gameObject.GetComponentInChildren<PortalExitRotation>().transform.forward * 2, ForceMode.Impulse);
         }
-
-        if (GetComponent<Turret>() != null) 
-        {
-            GetComponentInChildren<TurretBehaviour>().hasBeenDisplaced = true;
-        }
     }
 
     public bool IsPortalOnCeiling()

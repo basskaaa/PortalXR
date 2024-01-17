@@ -10,10 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1ae6275f4e6b1a4dbe4f7cb7dcf024a, type: 3}
-  m_Name: Voice Clip Holder
+  m_Name: Super Button
   m_EditorClassIdentifier: 
   VoiceLine:
-  - {fileID: 8300000, guid: 04cce41de10583648915051905e547f7, type: 3}
-  - {fileID: 8300000, guid: f201af6c5d4cb204a9162a85a72a248c, type: 3}
-  VoiceLineDelay:
-  - 10
+  - {fileID: 8300000, guid: 1ad59a44176851f4a990c7ef38247617, type: 3}
+  VoiceLineDelay: []

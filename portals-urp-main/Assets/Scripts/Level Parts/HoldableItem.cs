@@ -11,13 +11,21 @@ public class HoldableItem : MonoBehaviour, IInteractable
     [HideInInspector] public bool isHeld = false;
 
     [SerializeField] private bool isTurret;
+    [SerializeField] private bool isBox;
 
     [SerializeField] private AudioClipHolder[] impactSound;
+    [SerializeField] private GameEvent boxPickedUp;
+    private bool eventRasied = false;
 
     public void OnInteract()
     {
         Debug.Log("Interact");
         if (!isHeld) SetHeld();
+        if (!isHeld && isBox && !eventRasied)
+        {
+            boxPickedUp.Raise();
+            eventRasied = true;
+        }
         if (isHeld && !isTurret) SetDrop();
         isHeld = !isHeld;
     }
@@ -60,7 +68,7 @@ public class HoldableItem : MonoBehaviour, IInteractable
             rigidbody.freezeRotation = true;
             gameObject.transform.rotation = turretHoldPosition.rotation;
 
-            gameObject.GetComponentInChildren<TurretBehaviour>().hasBeenDisplaced = true;
+            gameObject.GetComponentInChildren<TurretBehaviour>().isDisplaced = true;
             return;
         }
         gameObject.transform.SetParent(holdPosition);
@@ -78,6 +86,7 @@ public class HoldableItem : MonoBehaviour, IInteractable
         rigidbody.freezeRotation = false;
         rigidbody.useGravity = true;
         gameObject.transform.SetParent(null);
+        gameObject.GetComponentInChildren<TurretBehaviour>().isDisplaced = false;
     }
 
     private void OnCollisionEnter(Collision collision)

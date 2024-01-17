@@ -16,6 +16,8 @@ public class Doors : MonoBehaviour
     [SerializeField] AudioClipHolder openSound;
     [SerializeField] AudioClipHolder closeSound;
 
+    [SerializeField] private GameEvent doorOpenEvent;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -60,6 +62,7 @@ public class Doors : MonoBehaviour
             isOpen = true;
             animator.SetBool("Open", true);
             AudioManager.Instance.PlaySound(openSound.AudioClip, openSound.Volume);
+            doorOpenEvent.Raise();
         }
     }
 

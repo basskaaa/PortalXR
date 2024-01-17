@@ -8,6 +8,7 @@ public class LaunchPad : MonoBehaviour
     private LaunchPadDirection direction;
 
     [SerializeField] private float force;
+    [SerializeField] AudioClipHolder launchSound;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class LaunchPad : MonoBehaviour
         {
             animator.SetTrigger("Launch");
             other.GetComponent<Rigidbody>().AddForce(direction.transform.forward * force, ForceMode.Force);
+            AudioManager.Instance.PlaySound(launchSound.AudioClip, launchSound.Volume);
         }
     }
 }

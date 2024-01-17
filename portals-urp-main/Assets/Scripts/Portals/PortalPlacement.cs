@@ -17,8 +17,8 @@ public class PortalPlacement : MonoBehaviour
     private CameraMove cameraMove;
 
     public bool canPlacePortals;
-    private bool inPortalActive;
-    private bool outPortalActive;
+    public bool inPortalActive;
+    public bool outPortalActive;
 
     [SerializeField] private AudioClipHolder orangePortalSound;
     [SerializeField] private AudioClipHolder bluePortalSound;
@@ -109,7 +109,7 @@ public class PortalPlacement : MonoBehaviour
     }
 
     private void CheckActivePortals(int portalID)
-    { 
+    {
         if (portalID == 0)
         {
             inPortalActive = true;
