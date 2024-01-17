@@ -22,6 +22,8 @@ public class PortalableObject : MonoBehaviour
 
     private static readonly Quaternion halfTurn = Quaternion.Euler(0.0f, 180.0f, 0.0f);
 
+    [SerializeField] private AudioClipHolder enterPortalSound;
+
     protected virtual void Awake()
     {
         cloneObject = new GameObject();
@@ -90,6 +92,8 @@ public class PortalableObject : MonoBehaviour
 
     public virtual void Warp()
     {
+        AudioManager.Instance.PlaySound(enterPortalSound.AudioClip, enterPortalSound.Volume);
+
         var inTransform = inPortal.transform;
         var outTransform = outPortal.transform;
         if (lastPortalTf != null) lastPortalTf.transform.position = outPortal.transform.position;
@@ -125,6 +129,16 @@ public class PortalableObject : MonoBehaviour
         var tmp = inPortal;
         inPortal = outPortal;
         outPortal = tmp;
+
+        if (FloorToFloorPortal()) 
+        {
+            rigidbody.AddForce(outPortal.gameObject.GetComponentInChildren<PortalExitRotation>().transform.forward * 2, ForceMode.Impulse);
+        }
+
+        if (GetComponent<Turret>() != null) 
+        {
+            GetComponentInChildren<TurretBehaviour>().hasBeenDisplaced = true;
+        }
     }
 
     public bool IsPortalOnCeiling()
@@ -142,6 +156,15 @@ public class PortalableObject : MonoBehaviour
         Debug.Log(outPortal.transform.rotation.x);
 
         if (inPortal.transform.rotation.x > 0 && (outPortal.transform.rotation.x == 0 || outPortal.transform.rotation.x == 1))
+        {
+            return true;
+        }
+        else return false;
+    }
+
+    public bool FloorToFloorPortal()
+    {
+        if (inPortal.transform.rotation.x > 0 && outPortal.transform.rotation.x > 0)
         {
             return true;
         }

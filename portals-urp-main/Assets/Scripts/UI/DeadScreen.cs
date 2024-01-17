@@ -9,7 +9,10 @@ public class DeadScreen : MonoBehaviour
 
     public void EnableDeathScreen()
     {
-        StartCoroutine(WaitToEnable());
+        if (GameManager.Instance.playerCanDie)
+        {
+            StartCoroutine(WaitToEnable());
+        }
     }
 
     private IEnumerator WaitToEnable()

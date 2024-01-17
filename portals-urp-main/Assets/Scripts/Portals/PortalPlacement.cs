@@ -20,6 +20,9 @@ public class PortalPlacement : MonoBehaviour
     private bool inPortalActive;
     private bool outPortalActive;
 
+    [SerializeField] private AudioClipHolder orangePortalSound;
+    [SerializeField] private AudioClipHolder bluePortalSound;
+
     private void Awake()
     {
         cameraMove = GetComponent<CameraMove>();
@@ -30,10 +33,13 @@ public class PortalPlacement : MonoBehaviour
         if(Input.GetButtonDown("Fire1") && canPlacePortals)
         {
             FirePortal(0, transform.position, transform.forward, 250.0f);
+            AudioManager.Instance.PlaySound(bluePortalSound.AudioClip, bluePortalSound.Volume);
+
         }
         else if (Input.GetButtonDown("Fire2") && canPlacePortals)
         {
             FirePortal(1, transform.position, transform.forward, 250.0f);
+            AudioManager.Instance.PlaySound(orangePortalSound.AudioClip, orangePortalSound.Volume);
         }
     }
 

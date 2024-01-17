@@ -11,6 +11,11 @@ public class Doors : MonoBehaviour
     bool used2;
     bool used3;
 
+    bool isOpen = false;
+
+    [SerializeField] AudioClipHolder openSound;
+    [SerializeField] AudioClipHolder closeSound;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -50,11 +55,21 @@ public class Doors : MonoBehaviour
 
     private void OpenDoors()
     {
-        animator.SetBool("Open", true);
+        if (!isOpen)
+        {
+            isOpen = true;
+            animator.SetBool("Open", true);
+            AudioManager.Instance.PlaySound(openSound.AudioClip, openSound.Volume);
+        }
     }
 
     private void CloseDoors()
     {
-        animator.SetBool("Open", false);
+        if (isOpen)
+        { 
+            isOpen = false;
+            animator.SetBool("Open", false);
+            AudioManager.Instance.PlaySound(closeSound.AudioClip, closeSound.Volume);
+        }
     }
 }

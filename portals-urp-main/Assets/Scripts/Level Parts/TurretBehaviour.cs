@@ -18,6 +18,9 @@ public class TurretBehaviour : MonoBehaviour
 
     private bool inFireRange = false;
     public bool isShooting = false;
+    [HideInInspector] public bool hasBeenDisplaced = false;
+
+    [SerializeField] private AudioClipHolder shootSound;
 
     private void Start()
     {
@@ -27,7 +30,7 @@ public class TurretBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (inFireRange)
+        if (inFireRange && !hasBeenDisplaced)
         {
             CheckAim();
         }
@@ -52,7 +55,7 @@ public class TurretBehaviour : MonoBehaviour
 
     private void CheckAim()
     {
-        if (Physics.Linecast(gameObject.transform.position, player.transform.position))
+        if (Physics.Raycast(gameObject.transform.position, player.transform.position))
         {
             //Debug.Log("Hit");
 
@@ -63,7 +66,7 @@ public class TurretBehaviour : MonoBehaviour
                 lineRenderers[i].SetPosition(1, player.transform.position);
             }
 
-            if (!isShooting)
+            if (!isShooting && !hasBeenDisplaced)
             {
                 StartCoroutine(WaitToShoot());
             }
@@ -81,6 +84,7 @@ public class TurretBehaviour : MonoBehaviour
 
     private IEnumerator TargetLost()
     {
+        isShooting = false;
         // lens sound
         yield return new WaitForSeconds(waitForTargetLost);
 
@@ -92,8 +96,6 @@ public class TurretBehaviour : MonoBehaviour
                 line.enabled = false;
                 yield return new WaitForSeconds(0.4f);
             }
-
-            isShooting = false;
         }
     }
 
@@ -107,10 +109,11 @@ public class TurretBehaviour : MonoBehaviour
 
     private IEnumerator Shoot()
     {
-        if (inFireRange)
+        if (inFireRange && GameManager.Instance.playerIsAlive)
         {
             foreach (var gun in guns)
             {
+                AudioManager.Instance.PlaySound(shootSound.AudioClip, shootSound.Volume);
                 int i = 0;
                 Bullet(gun);
                 MuzzleFlash(gun);

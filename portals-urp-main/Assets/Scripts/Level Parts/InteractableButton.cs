@@ -6,6 +6,7 @@ public class InteractableButton : MonoBehaviour, IInteractable
 {
     private Animator animator;
     [SerializeField] private GameEvent buttonPressed;
+    [SerializeField] private AudioClipHolder buttonSound;
 
     private void Start()
     {
@@ -14,6 +15,7 @@ public class InteractableButton : MonoBehaviour, IInteractable
 
     private void ButtonPressed()
     {
+        AudioManager.Instance.PlaySound(buttonSound.AudioClip, buttonSound.Volume);
         animator.SetTrigger("Pressed");
         buttonPressed.Raise();
     }

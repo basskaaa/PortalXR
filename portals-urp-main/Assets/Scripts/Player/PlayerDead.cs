@@ -17,12 +17,16 @@ public class PlayerDead : MonoBehaviour
 
     public void StopPlayerControls()
     {
-        controller.playerCanMove = false;
-        controller.cameraCanMove = false;
-        controller.enableJump = false;
-        controller.enableCrouch = false;
-        portalContoller.canPlacePortals = false;
-        interactor.canInteract = false;
+        if (GameManager.Instance.playerCanDie)
+        {
+            controller.playerCanMove = false;
+            controller.cameraCanMove = false;
+            controller.enableJump = false;
+            controller.enableCrouch = false;
+            portalContoller.canPlacePortals = false;
+            interactor.canInteract = false;
+            GameManager.Instance.playerIsAlive = false;
+        }
     }
 
     public void StartPlayerControls()

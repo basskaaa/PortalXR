@@ -8,8 +8,7 @@ public class OutOfBoundsCollision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameObject Player = other.gameObject;
-            PortalableObject portalableObject = Player.GetComponent<PortalableObject>();
+            PortalableObject portalableObject = FindObjectOfType<PortalableObject>();
             Transform lastPortalTf = portalableObject.lastPortalTf.transform;
 
             if (!portalableObject.IsPortalOnCeiling()) 
@@ -20,6 +19,11 @@ public class OutOfBoundsCollision : MonoBehaviour
             {
                 other.gameObject.transform.position = new Vector3(lastPortalTf.transform.position.x, lastPortalTf.transform.position.y - portalableObject.ceilingClippingLenth, lastPortalTf.transform.position.z);
             }
+        }
+
+        if (other.gameObject.CompareTag("Interactable"))
+        {
+            //Destroy and respawn
         }
     }
 }

@@ -5,4 +5,6 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public bool bothPortalsActive;
+    public bool playerCanDie = true;
+    public bool playerIsAlive = true;
 }

@@ -12,11 +12,13 @@ public class HoldableItem : MonoBehaviour, IInteractable
 
     [SerializeField] private bool isTurret;
 
+    [SerializeField] private AudioClipHolder[] impactSound;
+
     public void OnInteract()
     {
         Debug.Log("Interact");
         if (!isHeld) SetHeld();
-        if (isHeld) SetDrop();
+        if (isHeld && !isTurret) SetDrop();
         isHeld = !isHeld;
     }
 
@@ -33,7 +35,14 @@ public class HoldableItem : MonoBehaviour, IInteractable
         {
             if (isTurret) 
             {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    SetTurretDrop();
+                }
+
                 gameObject.transform.position = turretHoldPosition.position;
+                gameObject.transform.rotation = turretHoldPosition.rotation;
+
                 return;
             }
             gameObject.transform.position = holdPosition.position;
@@ -48,8 +57,10 @@ public class HoldableItem : MonoBehaviour, IInteractable
         {
             gameObject.transform.SetParent(turretHoldPosition);
             gameObject.transform.position = turretHoldPosition.position;
-            gameObject.transform.rotation = turretHoldPosition.rotation;
             rigidbody.freezeRotation = true;
+            gameObject.transform.rotation = turretHoldPosition.rotation;
+
+            gameObject.GetComponentInChildren<TurretBehaviour>().hasBeenDisplaced = true;
             return;
         }
         gameObject.transform.SetParent(holdPosition);
@@ -58,11 +69,21 @@ public class HoldableItem : MonoBehaviour, IInteractable
 
     public void SetDrop()
     {
-        if (isTurret)
-        {
-            rigidbody.freezeRotation = false;
-        }
         rigidbody.useGravity = true;
         gameObject.transform.SetParent(null);
+    }
+
+    public void SetTurretDrop()
+    {
+        rigidbody.freezeRotation = false;
+        rigidbody.useGravity = true;
+        gameObject.transform.SetParent(null);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        int i = Random.Range(0, impactSound.Length);
+
+        AudioManager.Instance.PlaySound(impactSound[i].AudioClip, impactSound[i].Volume);
     }
 }
