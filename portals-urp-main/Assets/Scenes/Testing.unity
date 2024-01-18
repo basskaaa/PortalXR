@@ -13299,7 +13299,7 @@ MonoBehaviour:
   waitForTargetLost: 4
   bulletForce: 10
   isShooting: 0
-  hasBeenDisplaced: 0
+  isDisplaced: 0
   shootSound: {fileID: 11400000, guid: fc89b2fd770794245827a2444934f1ae, type: 2}
 --- !u!64 &938595258
 MeshCollider:
@@ -25688,7 +25688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bothPortalsActive: 0
-  playerCanDie: 0
+  playerCanDie: 1
   playerIsAlive: 1
 --- !u!4 &1531853944
 Transform:
