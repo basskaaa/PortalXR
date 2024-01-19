@@ -6,6 +6,7 @@ public class UiManager : MonoBehaviour
 {
     [SerializeField] private GameEvent PauseEvent;
     [SerializeField] private GameEvent ClosePauseEvent;
+    [SerializeField] private GameObject portalGun;
     private bool isPaused;
 
     private void Awake()
@@ -29,5 +30,10 @@ public class UiManager : MonoBehaviour
                 isPaused = !isPaused;
             }
         }
+    }
+
+    public void GetPortalGun()
+    {
+        portalGun.SetActive(true);
     }
 }

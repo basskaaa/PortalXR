@@ -11,17 +11,20 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] AudioSource MusicSource;
     [SerializeField] AudioSource SfxSource;           
 
-    public void PlaySound(float lowPitchRange, float highPitchRange, AudioClip clipToPlay, float volume)
-    {
-        SfxSource.pitch = Random.Range(lowPitchRange, highPitchRange);
-        SfxSource.PlayOneShot(clipToPlay);
-        SfxSource.volume = volume;
-    }
+    //public void PlaySound(float lowPitchRange, float highPitchRange, AudioClip clipToPlay, float volume)
+    //{
+    //    SfxSource.pitch = Random.Range(lowPitchRange, highPitchRange);
+    //    SfxSource.PlayOneShot(clipToPlay);
+    //    SfxSource.volume = volume;
+    //}
 
     public void PlaySound(AudioClip clipToPlay, float volume)
     {
-        SfxSource.PlayOneShot(clipToPlay);
-        SfxSource.volume = volume;
+        if (GameManager.Instance.playerIsActive)
+        {
+            SfxSource.PlayOneShot(clipToPlay);
+            SfxSource.volume = volume;
+        }
     }
 
     public void PlayMusic(AudioClip music, float volume)

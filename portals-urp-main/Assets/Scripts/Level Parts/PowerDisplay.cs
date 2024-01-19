@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class PowerDisplay : MonoBehaviour
 {
-    [SerializeField] private Material Material1;
-    [SerializeField] private Material Material2;
+    [SerializeField] private Material PowerMaterial;
+    [SerializeField] private Material UnpowerMaterial;
+    [SerializeField] private MeshRenderer[] display;
 
-    public void ChangeMaterial()
+
+    public void SetPoweredMaterial(int index)
     {
-        gameObject.GetComponent<MeshRenderer>().material = Material1;
+        display[index].material = PowerMaterial;
     }
 
-    public void ChangeMaterial2()
+    public void SetUnpoweredMaterial(int index)
     {
-        gameObject.GetComponent<MeshRenderer>().material = Material2;
+        display[index].material = UnpowerMaterial;
     }
 }

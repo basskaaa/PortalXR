@@ -28,6 +28,8 @@ public class Portal : MonoBehaviour
     public Renderer Renderer { get; private set; }
     private new BoxCollider collider;
 
+    [SerializeField] private bool isFixed;
+
     private void Awake()
     {
         collider = GetComponent<BoxCollider>();
@@ -37,8 +39,11 @@ public class Portal : MonoBehaviour
     private void Start()
     {
         outlineRenderer.material.SetColor("_OutlineColour", PortalColour);
-        
-        gameObject.SetActive(false);
+
+        if (!isFixed)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void Update()

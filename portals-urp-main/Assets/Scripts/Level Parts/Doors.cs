@@ -1,61 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Doors : MonoBehaviour
 {
+    [SerializeField] bool isOpenOnStart = false;
+    [SerializeField] bool hasTriggerCollider = false;
+    [SerializeField] bool hasEventTriggers = false;
+    [SerializeField] bool[] trigger;
+
     private Animator animator;
-    private int powerLevel;
-
-    bool used1;
-    bool used2;
-    bool used3;
-
-    bool isOpen = false;
 
     [SerializeField] AudioClipHolder openSound;
     [SerializeField] AudioClipHolder closeSound;
 
     [SerializeField] private GameEvent doorOpenEvent;
 
+    private bool isOpen;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
+        isOpen = isOpenOnStart;
+
+        if (isOpenOnStart)
+        {
+            OpenDoors();
+        }
     }
 
     private void Update()
     {
-        if (used1 && used2 && used3) 
+        if (CheckTriggers() && hasEventTriggers) 
         { 
             OpenDoors();
         }
-        else
+        if (hasEventTriggers && !CheckTriggers())
         {
             CloseDoors();
         }
     }
 
-    public void PButtonDown()
-    {
-        used3 = true;
+    private bool CheckTriggers()
+    { 
+        foreach (bool t in trigger) 
+        { 
+            if (!t)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
-    public void PButtonUp()
+    public void SetTrigger(int index)
     {
-        used3 = false;
+        trigger[index] = true;
     }
 
-    public void IButton1On()
+    public void UnsetTrigger(int index)
     {
-        used1 = true;
+        trigger[index] = false;
     }
 
-    public void IButton2On()
-    {
-        used2 = true;
-    }
-
-    private void OpenDoors()
+    public void OpenDoors()
     {
         if (!isOpen)
         {
@@ -63,16 +72,18 @@ public class Doors : MonoBehaviour
             animator.SetBool("Open", true);
             AudioManager.Instance.PlaySound(openSound.AudioClip, openSound.Volume);
             doorOpenEvent.Raise();
+            Debug.Log("Open");
         }
     }
 
-    private void CloseDoors()
+    public void CloseDoors()
     {
         if (isOpen)
         { 
             isOpen = false;
             animator.SetBool("Open", false);
             AudioManager.Instance.PlaySound(closeSound.AudioClip, closeSound.Volume);
+            Debug.Log("Closed");
         }
     }
 }

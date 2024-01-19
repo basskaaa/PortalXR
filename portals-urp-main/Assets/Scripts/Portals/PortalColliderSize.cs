@@ -16,6 +16,7 @@ public class PortalColliderSize : MonoBehaviour
     private void Start()
     {
         collider = GetComponent<BoxCollider>();
+        playerRb = FindObjectOfType<FirstPersonController>().gameObject.GetComponent<Rigidbody>();
         size = collider.size;
     }
 

@@ -19,6 +19,8 @@ public class MovingPlatform : MonoBehaviour
     private float _timeToWaypoint;
     private float _elapsedTime;
 
+    private Transform _oldParent;
+
     void Start()
     {
         TargetNextWaypoint();
@@ -58,6 +60,7 @@ public class MovingPlatform : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Interactable"))
         {
+            _oldParent = other.transform.parent; 
             other.transform.SetParent(transform);
         }
     }
@@ -66,6 +69,11 @@ public class MovingPlatform : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Interactable"))
         {
+            if (_oldParent != null) 
+            {
+                other.transform.SetParent(_oldParent);
+                return;
+            }
             other.transform.SetParent(null);
         }
     }

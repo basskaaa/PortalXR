@@ -16,6 +16,9 @@ public class HoldableItem : MonoBehaviour, IInteractable
     [SerializeField] private AudioClipHolder[] impactSound;
     [SerializeField] private GameEvent boxPickedUp;
     private bool eventRasied = false;
+    private bool firstFall = false;
+
+    private Transform _oldParent;
 
     public void OnInteract()
     {
@@ -71,6 +74,8 @@ public class HoldableItem : MonoBehaviour, IInteractable
             gameObject.GetComponentInChildren<TurretBehaviour>().isDisplaced = true;
             return;
         }
+
+        _oldParent = gameObject.transform.parent;
         gameObject.transform.SetParent(holdPosition);
         gameObject.transform.position = holdPosition.position;
     }
@@ -78,6 +83,11 @@ public class HoldableItem : MonoBehaviour, IInteractable
     public void SetDrop()
     {
         rigidbody.useGravity = true;
+        if (_oldParent != null)
+        {
+            gameObject.transform.SetParent(_oldParent);
+            return;
+        }
         gameObject.transform.SetParent(null);
     }
 
@@ -91,8 +101,15 @@ public class HoldableItem : MonoBehaviour, IInteractable
 
     private void OnCollisionEnter(Collision collision)
     {
-        int i = Random.Range(0, impactSound.Length);
+        if (firstFall)
+        {
+            int i = Random.Range(0, impactSound.Length);
 
-        AudioManager.Instance.PlaySound(impactSound[i].AudioClip, impactSound[i].Volume);
+            AudioManager.Instance.PlaySound(impactSound[i].AudioClip, impactSound[i].Volume);
+        }
+        else
+        {
+            firstFall = true;
+        }
     }
 }

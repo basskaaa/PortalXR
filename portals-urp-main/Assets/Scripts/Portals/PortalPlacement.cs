@@ -23,20 +23,36 @@ public class PortalPlacement : MonoBehaviour
     [SerializeField] private AudioClipHolder orangePortalSound;
     [SerializeField] private AudioClipHolder bluePortalSound;
 
+    [SerializeField] private bool fixedPortalsInLevel;
+    [SerializeField] private Transform orangePortalShootTf;
+
     private void Awake()
     {
         cameraMove = GetComponent<CameraMove>();
+
+        if (fixedPortalsInLevel)
+        {
+            //SetFixedPortals();
+        }
+    }
+
+    private void Start()
+    {
+        if (fixedPortalsInLevel)
+        {
+            SetFixedPortals();
+        }
     }
 
     private void Update()
     {
-        if(Input.GetButtonDown("Fire1") && canPlacePortals)
+        if(Input.GetButtonDown("Fire1") && (GameManager.Instance.playerHasPortalGun || GameManager.Instance.playerCanShootBlue))
         {
             FirePortal(0, transform.position, transform.forward, 250.0f);
             AudioManager.Instance.PlaySound(bluePortalSound.AudioClip, bluePortalSound.Volume);
 
         }
-        else if (Input.GetButtonDown("Fire2") && canPlacePortals)
+        else if (Input.GetButtonDown("Fire2") && GameManager.Instance.playerHasPortalGun)
         {
             FirePortal(1, transform.position, transform.forward, 250.0f);
             AudioManager.Instance.PlaySound(orangePortalSound.AudioClip, orangePortalSound.Volume);
@@ -122,5 +138,10 @@ public class PortalPlacement : MonoBehaviour
         {
             GameManager.Instance.bothPortalsActive = true;
         }
+    }
+
+    private void SetFixedPortals()
+    {
+        FirePortal(0, orangePortalShootTf.position, orangePortalShootTf.forward, 250.0f);
     }
 }
