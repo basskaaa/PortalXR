@@ -29,18 +29,13 @@ public class PortalPlacement : MonoBehaviour
     private void Awake()
     {
         cameraMove = GetComponent<CameraMove>();
-
-        if (fixedPortalsInLevel)
-        {
-            //SetFixedPortals();
-        }
     }
 
     private void Start()
     {
         if (fixedPortalsInLevel)
         {
-            SetFixedPortals();
+            StartCoroutine(SetFixedPortals());
         }
     }
 
@@ -120,6 +115,7 @@ public class PortalPlacement : MonoBehaviour
             {
                 crosshair.SetPortalPlaced(portalID, true);
                 CheckActivePortals(portalID);
+                Debug.Log(portalID);
             }
         }
     }
@@ -140,8 +136,10 @@ public class PortalPlacement : MonoBehaviour
         }
     }
 
-    private void SetFixedPortals()
+    private IEnumerator SetFixedPortals()
     {
+        yield return new WaitForSeconds(1f);
+        orangePortalShootTf = FindObjectOfType<OrangePortalFiringPoint>().transform;
         FirePortal(0, orangePortalShootTf.position, orangePortalShootTf.forward, 250.0f);
     }
 }

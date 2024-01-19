@@ -7,6 +7,7 @@ public class HoldableItem : MonoBehaviour, IInteractable
     private Transform holdPosition;
     private Transform turretHoldPosition;
     private Rigidbody rigidbody;
+    private Collider collider;
 
     [HideInInspector] public bool isHeld = false;
 
@@ -36,6 +37,7 @@ public class HoldableItem : MonoBehaviour, IInteractable
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
         holdPosition = FindObjectOfType<ItemHoldPosition>().transform;
         turretHoldPosition = FindObjectOfType<TurretHoldPos>().transform;
     }
@@ -57,6 +59,12 @@ public class HoldableItem : MonoBehaviour, IInteractable
                 return;
             }
             gameObject.transform.position = holdPosition.position;
+            Physics.IgnoreLayerCollision(7, 8, true);
+        }
+
+        else
+        {
+            Physics.IgnoreLayerCollision(7, 8, false);
         }
     }
 
