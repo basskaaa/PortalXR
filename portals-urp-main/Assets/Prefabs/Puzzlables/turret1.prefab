@@ -1426,6 +1426,10 @@ MonoBehaviour:
   isShooting: 0
   isDisplaced: 0
   shootSound: {fileID: 11400000, guid: fc89b2fd770794245827a2444934f1ae, type: 2}
+  lensSound:
+  - {fileID: 11400000, guid: c2790cf97c9cc7940a4b0240f34c5eb8, type: 2}
+  - {fileID: 11400000, guid: 6e2b5dd2ff50f0e4490c3e8abbbca858, type: 2}
+  - {fileID: 11400000, guid: 577792a436d29a44d99b2d90b9a93aa3, type: 2}
 --- !u!23 &746858433984251759
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1591,7 +1595,7 @@ Transform:
   - {fileID: 2605149094738062843}
   - {fileID: 7378309018657869266}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!137 &9173662518616776065
 SkinnedMeshRenderer:

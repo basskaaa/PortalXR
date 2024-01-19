@@ -183,7 +183,7 @@ public class PortalableObject : MonoBehaviour
         }
         else
         {
-            rigidbody.AddForce(WallPortal.forward * downForce * 195, ForceMode.Force);
+            rigidbody.AddForce(WallPortal.forward * downForce * 250, ForceMode.Force);
         }
 
         // Swap portal references.

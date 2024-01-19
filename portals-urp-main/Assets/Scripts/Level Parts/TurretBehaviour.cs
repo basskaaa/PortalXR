@@ -16,12 +16,15 @@ public class TurretBehaviour : MonoBehaviour
     [SerializeField] float fireRate = 0.1f;
     [SerializeField] float waitForTargetLost = 4f;
     [SerializeField] float bulletForce = 100f;
+    [SerializeField] float sightDistance = 15f;
 
     private bool inFireRange = false;
     public bool isShooting = false;
     [HideInInspector] public bool isDisplaced = false;
 
     [SerializeField] private AudioClipHolder shootSound;
+    [SerializeField] private AudioClipHolder[] lensSound;
+    private bool isPlayingLensSound = false;
 
     private void Start()
     {
@@ -70,9 +73,17 @@ public class TurretBehaviour : MonoBehaviour
 
     private void CheckAim()
     {
-        if (Physics.Raycast(gameObject.transform.position, player.transform.position))
+        RaycastHit hit;
+
+        if (Physics.Raycast(gameObject.transform.position, player.transform.position, out hit) && hit.transform.gameObject.CompareTag("Player"))
         {
             //Debug.Log("Hit");
+            if (!isPlayingLensSound)
+            {
+                isPlayingLensSound = true;
+                int i = Random.Range(0, lensSound.Length);
+                AudioManager.Instance.PlaySound(lensSound[i].AudioClip, lensSound[i].Volume);
+            }
 
             StartCoroutine(DrawLine());
 
@@ -109,6 +120,8 @@ public class TurretBehaviour : MonoBehaviour
     private IEnumerator TargetLost()
     {
         isShooting = false;
+        isPlayingLensSound = false;
+
         // lens sound
         yield return new WaitForSeconds(waitForTargetLost);
 
