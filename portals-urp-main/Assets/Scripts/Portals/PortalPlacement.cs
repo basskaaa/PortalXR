@@ -23,25 +23,14 @@ public class PortalPlacement : MonoBehaviour
     [SerializeField] private AudioClipHolder orangePortalSound;
     [SerializeField] private AudioClipHolder bluePortalSound;
 
-    [SerializeField] private bool fixedPortalsInLevel;
-    [SerializeField] private Transform orangePortalShootTf;
-
     private void Awake()
     {
         cameraMove = GetComponent<CameraMove>();
     }
 
-    private void Start()
-    {
-        if (fixedPortalsInLevel)
-        {
-            StartCoroutine(SetFixedPortals());
-        }
-    }
-
     private void Update()
     {
-        if(Input.GetButtonDown("Fire1") && (GameManager.Instance.playerHasPortalGun || GameManager.Instance.playerCanShootBlue))
+        if(Input.GetButtonDown("Fire1") && GameManager.Instance.playerHasPortalGun)
         {
             FirePortal(0, transform.position, transform.forward, 250.0f);
             AudioManager.Instance.PlaySound(bluePortalSound.AudioClip, bluePortalSound.Volume);
@@ -54,7 +43,7 @@ public class PortalPlacement : MonoBehaviour
         }
     }
 
-    private void FirePortal(int portalID, Vector3 pos, Vector3 dir, float distance)
+    public void FirePortal(int portalID, Vector3 pos, Vector3 dir, float distance)
     {
         RaycastHit hit;
         Physics.Raycast(pos, dir, out hit, distance, layerMask);
@@ -110,12 +99,13 @@ public class PortalPlacement : MonoBehaviour
             
             // Attempt to place the portal.
             bool wasPlaced = portals.Portals[portalID].PlacePortal(hit.collider, hit.point, portalRotation);
+            Debug.Log(hit.transform.gameObject);
 
             if(wasPlaced)
             {
                 crosshair.SetPortalPlaced(portalID, true);
                 CheckActivePortals(portalID);
-                Debug.Log(portalID);
+                //Debug.Log(portalID);
             }
         }
     }
@@ -134,12 +124,5 @@ public class PortalPlacement : MonoBehaviour
         {
             GameManager.Instance.bothPortalsActive = true;
         }
-    }
-
-    private IEnumerator SetFixedPortals()
-    {
-        yield return new WaitForSeconds(1f);
-        orangePortalShootTf = FindObjectOfType<OrangePortalFiringPoint>().transform;
-        FirePortal(0, orangePortalShootTf.position, orangePortalShootTf.forward, 250.0f);
     }
 }

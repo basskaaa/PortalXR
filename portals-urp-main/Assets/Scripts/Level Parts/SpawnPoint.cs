@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
+    [SerializeField] bool spawnAtStart;
+
     private void Awake()
     {
-        FindObjectOfType<FirstPersonController>().transform.position = transform.position;
-        FindObjectOfType<FirstPersonController>().transform.rotation = transform.rotation;
+        if (spawnAtStart)
+        {
+            FindObjectOfType<FirstPersonController>().transform.position = transform.position;
+            FindObjectOfType<FirstPersonController>().transform.rotation = transform.rotation;
+        }
     }
 }

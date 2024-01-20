@@ -6,10 +6,11 @@ public class OutOfBoundsCollision : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Interactable"))
         {
             PortalableObject portalableObject = FindObjectOfType<PortalableObject>();
             Transform lastPortalTf = portalableObject.lastPortalTf.transform;
+            Debug.Log(other.gameObject.name + " out of bounds");
 
             if (!portalableObject.IsPortalOnCeiling()) 
             {

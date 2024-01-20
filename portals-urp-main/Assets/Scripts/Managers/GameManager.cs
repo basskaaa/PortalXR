@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public bool playerHasPortalGun = false;
-    public bool playerCanShootBlue = false;
     public bool bothPortalsActive;
     public bool playerCanDie = true;
     public bool playerIsAlive = true;

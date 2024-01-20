@@ -28,8 +28,6 @@ public class Portal : MonoBehaviour
     public Renderer Renderer { get; private set; }
     private new BoxCollider collider;
 
-    [SerializeField] private bool isFixed;
-
     private void Awake()
     {
         collider = GetComponent<BoxCollider>();
@@ -39,11 +37,6 @@ public class Portal : MonoBehaviour
     private void Start()
     {
         outlineRenderer.material.SetColor("_OutlineColour", PortalColour);
-
-        if (!isFixed)
-        {
-            gameObject.SetActive(false);
-        }
     }
 
     private void Update()
@@ -74,6 +67,7 @@ public class Portal : MonoBehaviour
                 }
             }
 
+            Debug.Log("In portal trigger");
             portalObjects.Add(obj);
             obj.SetIsInPortal(this, OtherPortal, wallCollider);
         }
@@ -226,7 +220,6 @@ public class Portal : MonoBehaviour
 
     public void RemovePortal()
     {
-        // End portal sfx
         gameObject.SetActive(false);
         IsPlaced = false;
     }

@@ -16,7 +16,6 @@ public class TurretBehaviour : MonoBehaviour
     [SerializeField] float fireRate = 0.1f;
     [SerializeField] float waitForTargetLost = 4f;
     [SerializeField] float bulletForce = 100f;
-    [SerializeField] float sightDistance = 15f;
 
     private bool inFireRange = false;
     public bool isShooting = false;

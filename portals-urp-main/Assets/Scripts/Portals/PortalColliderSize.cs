@@ -5,7 +5,7 @@ using UnityEngine;
 public class PortalColliderSize : MonoBehaviour
 {
     [SerializeField] private Rigidbody playerRb;
-    private BoxCollider collider;
+    private BoxCollider portalCollider;
 
     [SerializeField] private float slowSize = 2f;
     [SerializeField] private float fastSize = 5f;
@@ -15,9 +15,9 @@ public class PortalColliderSize : MonoBehaviour
 
     private void Start()
     {
-        collider = GetComponent<BoxCollider>();
+        portalCollider = GetComponent<BoxCollider>();
         playerRb = FindObjectOfType<FirstPersonController>().gameObject.GetComponent<Rigidbody>();
-        size = collider.size;
+        size = portalCollider.size;
     }
 
     private void Update()
@@ -26,11 +26,11 @@ public class PortalColliderSize : MonoBehaviour
 
         if (playerRb.velocity.x < 10 && playerRb.velocity.x < 10 && playerRb.velocity.x < 10 && playerRb.velocity.x > -10 && playerRb.velocity.x > -10 && playerRb.velocity.x > -10)
         {
-            collider.size = new Vector3 (size.x, size.y, slowSize);
+            portalCollider.size = new Vector3 (size.x, size.y, slowSize);
         }
         else
         {
-            collider.size = new Vector3(size.x, size.y, fastSize);
+            portalCollider.size = new Vector3(size.x, size.y, fastSize);
         }
     }
 }

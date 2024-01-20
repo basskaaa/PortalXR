@@ -6,7 +6,7 @@ using UnityEngine;
 public class Doors : MonoBehaviour
 {
     [SerializeField] bool isOpenOnStart = false;
-    [SerializeField] bool hasTriggerCollider = false;
+    //[SerializeField] bool hasTriggerCollider = false;
     [SerializeField] bool hasEventTriggers = false;
     [SerializeField] bool[] trigger;
 
@@ -72,7 +72,7 @@ public class Doors : MonoBehaviour
             animator.SetBool("Open", true);
             AudioManager.Instance.PlaySound(openSound.AudioClip, openSound.Volume);
             doorOpenEvent.Raise();
-            Debug.Log("Open");
+            //Debug.Log("Open");
         }
     }
 
@@ -83,7 +83,7 @@ public class Doors : MonoBehaviour
             isOpen = false;
             animator.SetBool("Open", false);
             AudioManager.Instance.PlaySound(closeSound.AudioClip, closeSound.Volume);
-            Debug.Log("Closed");
+            //Debug.Log("Closed");
         }
     }
 }

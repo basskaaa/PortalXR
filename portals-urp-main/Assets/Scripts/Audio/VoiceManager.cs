@@ -10,9 +10,10 @@ public class VoiceManager : Singleton<VoiceManager>
 
     private bool isPlaying = false;
 
-    private void Awake()
+    protected override void Awake()
     {
         voiceSource = GetComponent<AudioSource>();
+        base.Awake();
     }
 
     public void AddVoiceLineToQueue(VoiceClipHolder voiceHolder)

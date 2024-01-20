@@ -6,8 +6,8 @@ public class HoldableItem : MonoBehaviour, IInteractable
 {
     private Transform holdPosition;
     private Transform turretHoldPosition;
-    private Rigidbody rigidbody;
-    private Collider collider;
+    private Rigidbody rb;
+    //private Collider collider;
 
     [HideInInspector] public bool isHeld = false;
 
@@ -36,8 +36,8 @@ public class HoldableItem : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        collider = GetComponent<Collider>();
+        rb = GetComponent<Rigidbody>();
+        //collider = GetComponent<Collider>();
         holdPosition = FindObjectOfType<ItemHoldPosition>().transform;
         turretHoldPosition = FindObjectOfType<TurretHoldPos>().transform;
     }
@@ -70,13 +70,13 @@ public class HoldableItem : MonoBehaviour, IInteractable
 
     private void SetHeld()
     {
-        rigidbody.useGravity = false;
+        rb.useGravity = false;
 
         if (isTurret)
         {
             gameObject.transform.SetParent(turretHoldPosition);
             gameObject.transform.position = turretHoldPosition.position;
-            rigidbody.freezeRotation = true;
+            rb.freezeRotation = true;
             gameObject.transform.rotation = turretHoldPosition.rotation;
 
             gameObject.GetComponentInChildren<TurretBehaviour>().isDisplaced = true;
@@ -90,7 +90,7 @@ public class HoldableItem : MonoBehaviour, IInteractable
 
     public void SetDrop()
     {
-        rigidbody.useGravity = true;
+        rb.useGravity = true;
         if (_oldParent != null)
         {
             gameObject.transform.SetParent(_oldParent);
@@ -101,8 +101,8 @@ public class HoldableItem : MonoBehaviour, IInteractable
 
     public void SetTurretDrop()
     {
-        rigidbody.freezeRotation = false;
-        rigidbody.useGravity = true;
+        rb.freezeRotation = false;
+        rb.useGravity = true;
         gameObject.transform.SetParent(null);
         gameObject.GetComponentInChildren<TurretBehaviour>().isDisplaced = false;
     }

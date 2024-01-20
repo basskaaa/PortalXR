@@ -9,8 +9,6 @@ public class PhysicsButton : MonoBehaviour
     [SerializeField] private GameEvent buttonUnpressed;
     [SerializeField] private AudioClipHolder buttonSound;
 
-    private bool soundCheck = false;
-
     private void Start()
     {
         animator = GetComponent<Animator>();

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(MeshFilter))]
-//[RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
 public class PortalableObject : MonoBehaviour
@@ -28,11 +26,6 @@ public class PortalableObject : MonoBehaviour
     {
         cloneObject = new GameObject();
         cloneObject.SetActive(false);
-        //var meshFilter = cloneObject.AddComponent<MeshFilter>();
-        //var meshRenderer = cloneObject.AddComponent<MeshRenderer>();
-
-        //meshFilter.mesh = GetComponent<MeshFilter>().mesh;
-        //meshRenderer.materials = GetComponent<MeshRenderer>().materials;
         cloneObject.transform.localScale = transform.localScale;
 
         rigidbody = GetComponent<Rigidbody>();
@@ -77,6 +70,8 @@ public class PortalableObject : MonoBehaviour
         cloneObject.SetActive(false);
 
         ++inPortalCount;
+
+        Debug.Log("Is in portal");
     }
 
     public void ExitPortal(Collider wallCollider)
@@ -88,10 +83,14 @@ public class PortalableObject : MonoBehaviour
         {
             cloneObject.SetActive(false);
         }
+
+        Debug.Log("Exit portal");
     }
 
     public virtual void Warp()
     {
+        Debug.Log("Warp");
+
         AudioManager.Instance.PlaySound(enterPortalSound.AudioClip, enterPortalSound.Volume);
 
         var inTransform = inPortal.transform;
@@ -147,9 +146,6 @@ public class PortalableObject : MonoBehaviour
 
     public bool FloorToWallPortal()
     {
-        Debug.Log(inPortal.transform.rotation.x);
-        Debug.Log(outPortal.transform.rotation.x);
-
         if (inPortal.transform.rotation.x > 0 && (outPortal.transform.rotation.x == 0 || outPortal.transform.rotation.x == 1))
         {
             return true;
