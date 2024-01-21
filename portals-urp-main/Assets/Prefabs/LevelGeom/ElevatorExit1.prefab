@@ -248,7 +248,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 12125
+  m_VersionIndex: 12128
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -600,7 +600,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4313
+  m_VersionIndex: 4316
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1331,7 +1331,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 8465
+  m_VersionIndex: 8468
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1502,10 +1502,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Open: 0
-  endLevelEvent: {fileID: 11400000, guid: c2265a91287f0324e98a6c44893a8832, type: 2}
-  isSceneLoader: 1
+  endLevelEvent: {fileID: 0}
+  isSceneLoader: 0
   sceneToLoad:
-    _sceneAsset: {fileID: 102900000, guid: 4053f614333870248a00dca6d9fb23d8, type: 3}
+    _sceneAsset: {fileID: 0}
     _sceneName: PORTAL_L2
   isSceneUnloader: 0
   sceneToUnload:
@@ -1759,7 +1759,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4962
+  m_VersionIndex: 4965
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2111,7 +2111,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 16847
+  m_VersionIndex: 16850
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2463,7 +2463,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 8248
+  m_VersionIndex: 8251
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2695,7 +2695,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4760694663921498582}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: -8, y: -14, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2728,7 +2728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2117885431469826532
 Transform:
   m_ObjectHideFlags: 0
@@ -2825,6 +2825,7 @@ Transform:
   - {fileID: 8731594656279801397}
   - {fileID: 2117885431469826532}
   - {fileID: 1508209071228107465}
+  - {fileID: 6640146709066496356}
   - {fileID: 5771008870903935244}
   m_Father: {fileID: 8205702522566798513}
   m_RootOrder: -1
@@ -2842,7 +2843,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpenOnStart: 0
-  hasTriggerCollider: 1
   hasEventTriggers: 0
   trigger: 000000
   openSound: {fileID: 11400000, guid: 48c321c23b4ef5a4f90029ecc69fc741, type: 2}
@@ -3153,6 +3153,82 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activate: {fileID: 11400000, guid: 9f9ac16af4fe811408e33322364e60aa, type: 2}
+--- !u!1 &8631794361435382287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6640146709066496356}
+  - component: {fileID: 2257726963231917129}
+  - component: {fileID: 7160296707900950269}
+  m_Layer: 2
+  m_Name: LoadTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6640146709066496356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631794361435382287}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.000017702578, y: 0, z: -1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8260749364418851106}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2257726963231917129
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631794361435382287}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7160296707900950269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631794361435382287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e12ba48ec64252469759dc0e42c1056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Open: 0
+  endLevelEvent: {fileID: 11400000, guid: c2265a91287f0324e98a6c44893a8832, type: 2}
+  isSceneLoader: 1
+  sceneToLoad:
+    _sceneAsset: {fileID: 102900000, guid: 4053f614333870248a00dca6d9fb23d8, type: 3}
+    _sceneName: PORTAL_L2
+  isSceneUnloader: 0
+  sceneToUnload:
+    _sceneAsset: {fileID: 0}
+    _sceneName: 
 --- !u!1 &8670251196539182942
 GameObject:
   m_ObjectHideFlags: 0
@@ -3290,6 +3366,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251189884726886402, guid: e473108862d340549b35f20e7cd169c3,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 2989
       objectReference: {fileID: 0}
     - target: {fileID: 2389291408822607105, guid: e473108862d340549b35f20e7cd169c3,
         type: 3}

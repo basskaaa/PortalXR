@@ -2,18 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UiManager : MonoBehaviour
+public class UiManager : Singleton<UiManager> 
 {
     [SerializeField] private GameEvent PauseEvent;
     [SerializeField] private GameEvent ClosePauseEvent;
     [SerializeField] private GameObject portalGun;
     private bool isPaused = false;
-
-    private void Awake()
-    {
-        //PauseEvent.Raise();
-        //isPaused = true;
-    }
 
     private void Update()
     {

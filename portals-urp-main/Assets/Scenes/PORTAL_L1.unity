@@ -4516,6 +4516,82 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &603038812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 603038813}
+  - component: {fileID: 603038815}
+  - component: {fileID: 603038814}
+  m_Layer: 2
+  m_Name: LoadTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &603038813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603038812}
+  m_LocalRotation: {x: 0.70710576, y: -0, z: 0.0000041725316, w: 0.7071079}
+  m_LocalPosition: {x: 0.00003555417, y: -7.5, z: -4.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7884975427783146268}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0.001}
+--- !u!114 &603038814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603038812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e12ba48ec64252469759dc0e42c1056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Open: 0
+  endLevelEvent: {fileID: 11400000, guid: 72df6c4219125b34c931950c7c423f95, type: 2}
+  isSceneLoader: 1
+  sceneToLoad:
+    _sceneAsset: {fileID: 102900000, guid: 4053f614333870248a00dca6d9fb23d8, type: 3}
+    _sceneName: PORTAL_L2
+  isSceneUnloader: 0
+  sceneToUnload:
+    _sceneAsset: {fileID: 0}
+    _sceneName: 
+--- !u!65 &603038815
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603038812}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &609222204
 GameObject:
   m_ObjectHideFlags: 0
@@ -12435,6 +12511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHere: 0
+  hasPortalGun: 0
 --- !u!1 &1769275679
 GameObject:
   m_ObjectHideFlags: 0
@@ -15944,10 +16021,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Open: 0
-  endLevelEvent: {fileID: 11400000, guid: 72df6c4219125b34c931950c7c423f95, type: 2}
-  isSceneLoader: 1
+  endLevelEvent: {fileID: 0}
+  isSceneLoader: 0
   sceneToLoad:
-    _sceneAsset: {fileID: 102900000, guid: 4053f614333870248a00dca6d9fb23d8, type: 3}
+    _sceneAsset: {fileID: 0}
     _sceneName: PORTAL_L2
   isSceneUnloader: 0
   sceneToUnload:
@@ -17593,34 +17670,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3245063373153452789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8681569762941448330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 069e564f7c384c04dafed5cc9b0e3c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 3e1ad920763be79469b2e9559df9ab54, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2515650933936061532}
-        m_TargetAssemblyTypeName: Doors, Assembly-CSharp
-        m_MethodName: SetTrigger
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &3295192102717600012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19169,34 +19218,6 @@ Transform:
   m_Father: {fileID: 6051314253663223841}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5058030705975930691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8681569762941448330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 069e564f7c384c04dafed5cc9b0e3c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 5f26d7aede1a3554cab2b2a272f2111f, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2515650933936061532}
-        m_TargetAssemblyTypeName: Doors, Assembly-CSharp
-        m_MethodName: UnsetTrigger
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &5063803732472612824
 Transform:
   m_ObjectHideFlags: 0
@@ -20136,34 +20157,6 @@ Transform:
   m_Father: {fileID: 5755496258581166898}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6670744248770175450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8681569762941448330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 069e564f7c384c04dafed5cc9b0e3c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: b48957ec6bdd220468e1e17f49449b28, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2515650933936061532}
-        m_TargetAssemblyTypeName: Doors, Assembly-CSharp
-        m_MethodName: SetTrigger
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &6722172584178118909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21468,6 +21461,7 @@ Transform:
   - {fileID: 7414551939277071371}
   - {fileID: 192846864904711130}
   - {fileID: 803646858379931895}
+  - {fileID: 603038813}
   - {fileID: 5755496258581166898}
   m_Father: {fileID: 7938049886414726799}
   m_RootOrder: -1
@@ -21786,34 +21780,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8402895051053168305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8681569762941448330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 069e564f7c384c04dafed5cc9b0e3c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 07f3a2bdeaf81c3479a44ad0aecd06d6, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2515650933936061532}
-        m_TargetAssemblyTypeName: Doors, Assembly-CSharp
-        m_MethodName: SetTrigger
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!65 &8403842411583873557
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21956,10 +21922,6 @@ GameObject:
   - component: {fileID: 7884975427783146268}
   - component: {fileID: 2515650933936061532}
   - component: {fileID: 1855508631224187897}
-  - component: {fileID: 3245063373153452789}
-  - component: {fileID: 8402895051053168305}
-  - component: {fileID: 6670744248770175450}
-  - component: {fileID: 5058030705975930691}
   m_Layer: 0
   m_Name: Door1
   m_TagString: Untagged

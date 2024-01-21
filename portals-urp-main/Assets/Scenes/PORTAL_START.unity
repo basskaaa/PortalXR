@@ -659,21 +659,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6773019060729042799}
   m_CullTransparentMesh: 1
---- !u!114 &3851757655283087742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6773019060729042799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f109173b7d729fd4eafaf029ea149247, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PauseEvent: {fileID: 11400000, guid: e3acfbd6767dd514c9b8bb56565d4196, type: 2}
-  ClosePauseEvent: {fileID: 11400000, guid: 773f188408e99cf4fb61cf4c3a24b8d1, type: 2}
-  portalGun: {fileID: 0}
 --- !u!114 &4020567334863302801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -945,12 +930,11 @@ GameObject:
   m_Component:
   - component: {fileID: 9199797648881011915}
   - component: {fileID: 1874326918846802980}
-  - component: {fileID: 3851757655283087742}
   - component: {fileID: 4557819965605986905}
   - component: {fileID: 3617956882568491816}
   - component: {fileID: 8788961083521940797}
   m_Layer: 0
-  m_Name: UiMenus
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

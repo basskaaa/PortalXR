@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PORTAL_L2.unity
     guid: 4053f614333870248a00dca6d9fb23d8
+  - enabled: 1
+    path: Assets/Scenes/PORTAL_L3.unity
+    guid: ce9b1bfcb19c7484ea075433d9bbfba5
   m_configObjects: {}

@@ -5,10 +5,11 @@ using UnityEngine;
 public class SpawnHere : MonoBehaviour
 {
     [SerializeField] private bool spawnHere;
+    [SerializeField] private bool hasPortalGun;
 
     private Transform player;
 
-    protected virtual void Awake()
+    protected void Awake()
     { 
         player = FindObjectOfType<FirstPersonController>().transform;
 
@@ -16,9 +17,17 @@ public class SpawnHere : MonoBehaviour
         {
             SetPosition();
         }
+
+        if (hasPortalGun)
+        {
+            GameManager.Instance.playerHasPortalGun = true;
+            UiManager.Instance.GetPortalGun();
+            FindObjectOfType<PortalPlacement>().canPlacePortals = true;
+            FindObjectOfType<Crosshair>().enabled = true;
+        }
     }
 
-    protected virtual void SetPosition()
+    private void SetPosition()
     {
         player.position = transform.position;
         player.rotation = transform.rotation;
