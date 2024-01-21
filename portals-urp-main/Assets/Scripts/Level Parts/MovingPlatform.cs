@@ -10,8 +10,10 @@ public class MovingPlatform : MonoBehaviour
 
     [SerializeField] private bool isRepeating = true;
     [SerializeField] private bool isActive = true;
+    [SerializeField] private bool isFirstLevel = false;
 
     private int _targetWaypointIndex;
+    private int activateCheck = 0;
 
     private Transform _previousWaypoint;
     private Transform _targetWaypoint;
@@ -62,6 +64,7 @@ public class MovingPlatform : MonoBehaviour
         {
             _oldParent = other.transform.parent; 
             other.transform.SetParent(transform);
+            Debug.Log(other.name + " " + gameObject.name);
         }
     }
 
@@ -72,6 +75,7 @@ public class MovingPlatform : MonoBehaviour
             if (_oldParent != null) 
             {
                 other.transform.SetParent(_oldParent);
+                Debug.Log(other.name + " " + _oldParent.name);
                 return;
             }
             other.transform.SetParent(null);
@@ -80,6 +84,22 @@ public class MovingPlatform : MonoBehaviour
 
     public void ActivatePlatform()
     {
-        isActive = true;
+        if (!isFirstLevel)
+        {
+            activateCheck++;
+            if (activateCheck != 2)
+            {
+                return;
+            }
+            else
+            {
+                isActive = true;
+            }
+            return;
+        }
+        else 
+        {
+            isActive = true;
+        }
     }
 }

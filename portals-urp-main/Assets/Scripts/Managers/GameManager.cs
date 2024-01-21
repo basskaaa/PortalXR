@@ -12,9 +12,9 @@ public class GameManager : Singleton<GameManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Escape)) 
-        { 
-            playerIsActive = true;
-        }
+        //if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Escape)) 
+        //{ 
+        //    playerIsActive = true;
+        //}
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DoorTrigger : MonoBehaviour
 {
+    [SerializeField] private bool OpensOrCloses = true;
     [SerializeField] private bool Open;
 
     [SerializeField] GameEvent endLevelEvent;
@@ -14,6 +15,8 @@ public class DoorTrigger : MonoBehaviour
     [SerializeField] SceneField sceneToUnload;
 
     private Doors door;
+    private bool loaded = false;
+    private bool unloaded = false;
 
     private void Start()
     {
@@ -22,24 +25,28 @@ public class DoorTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Open && other.gameObject.CompareTag("Player"))
+        if (OpensOrCloses && Open && other.gameObject.CompareTag("Player"))
         {
             door.OpenDoors();
         }
-        if (!Open && other.gameObject.CompareTag("Player"))
+        if (OpensOrCloses && !Open && other.gameObject.CompareTag("Player"))
         {
             door.CloseDoors();
         }
-        if (isSceneLoader)
+
+        if (isSceneLoader && !loaded)
         {
             endLevelEvent.Raise();
             SceneSwapManager.Instance.SwapScene(sceneToLoad);
             Debug.Log("Loading: " + sceneToLoad);
+            loaded = true;
         }        
-        if (isSceneUnloader)
+        if (isSceneUnloader && !unloaded)
         {
+            Player.Instance.SetParent();
             SceneSwapManager.Instance.UnloadScene(sceneToUnload);
             Debug.Log("Unloading: " + sceneToUnload);
+            unloaded = true;
         }
     }
 }
