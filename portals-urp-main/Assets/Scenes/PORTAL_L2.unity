@@ -1076,6 +1076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpensOrCloses: 0
   Open: 0
+  OverrideButtons: 0
   endLevelEvent: {fileID: 0}
   isSceneLoader: 0
   sceneToLoad:
@@ -2455,6 +2456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpensOrCloses: 0
   Open: 0
+  OverrideButtons: 0
   endLevelEvent: {fileID: 11400000, guid: 72df6c4219125b34c931950c7c423f95, type: 2}
   isSceneLoader: 1
   sceneToLoad:
@@ -7007,7 +7009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b113deb7e68a9134ab209794ceb22c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnHere: 0
+  spawnHere: 1
   hasPortalGun: 0
 --- !u!1 &1113245987
 GameObject:
@@ -17042,6 +17044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpensOrCloses: 1
   Open: 0
+  OverrideButtons: 0
   endLevelEvent: {fileID: 0}
   isSceneLoader: 0
   sceneToLoad:
@@ -17065,6 +17068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpensOrCloses: 1
   Open: 1
+  OverrideButtons: 0
   endLevelEvent: {fileID: 0}
   isSceneLoader: 0
   sceneToLoad:
@@ -17655,6 +17659,7 @@ MonoBehaviour:
   openSound: {fileID: 11400000, guid: 48c321c23b4ef5a4f90029ecc69fc741, type: 2}
   closeSound: {fileID: 11400000, guid: d3301ab0f9d3d674aa3aa339c370f037, type: 2}
   doorOpenEvent: {fileID: 11400000, guid: 883ac257ca23289458f288ae8a8bbfa9, type: 2}
+  hasTriggeredFinal: 0
 --- !u!1 &1992596027542866848
 GameObject:
   m_ObjectHideFlags: 0
@@ -17721,6 +17726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpensOrCloses: 1
   Open: 0
+  OverrideButtons: 0
   endLevelEvent: {fileID: 0}
   isSceneLoader: 0
   sceneToLoad:
@@ -18607,6 +18613,7 @@ MonoBehaviour:
   openSound: {fileID: 11400000, guid: 48c321c23b4ef5a4f90029ecc69fc741, type: 2}
   closeSound: {fileID: 11400000, guid: d3301ab0f9d3d674aa3aa339c370f037, type: 2}
   doorOpenEvent: {fileID: 11400000, guid: 883ac257ca23289458f288ae8a8bbfa9, type: 2}
+  hasTriggeredFinal: 0
 --- !u!33 &4417004382114802702
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -20019,6 +20026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpensOrCloses: 1
   Open: 1
+  OverrideButtons: 0
   endLevelEvent: {fileID: 0}
   isSceneLoader: 0
   sceneToLoad:

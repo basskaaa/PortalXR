@@ -14295,6 +14295,7 @@ MonoBehaviour:
   _speed: 2
   isRepeating: 0
   isActive: 1
+  isFirstLevel: 0
 --- !u!64 &1187305615
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20054,6 +20055,7 @@ MonoBehaviour:
   _speed: 2
   isRepeating: 0
   isActive: 0
+  isFirstLevel: 0
 --- !u!64 &1523570184
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -30982,6 +30984,7 @@ MonoBehaviour:
   openSound: {fileID: 11400000, guid: 48c321c23b4ef5a4f90029ecc69fc741, type: 2}
   closeSound: {fileID: 11400000, guid: d3301ab0f9d3d674aa3aa339c370f037, type: 2}
   doorOpenEvent: {fileID: 11400000, guid: 883ac257ca23289458f288ae8a8bbfa9, type: 2}
+  hasTriggeredFinal: 0
 --- !u!65 &226383047054442916
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31041,7 +31044,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e12ba48ec64252469759dc0e42c1056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OpensOrCloses: 1
   Open: 0
+  OverrideButtons: 0
   endLevelEvent: {fileID: 0}
   isSceneLoader: 0
   sceneToLoad:
@@ -31754,6 +31759,11 @@ PrefabInstance:
       propertyPath: playerRb
       value: 
       objectReference: {fileID: 4459864851258799219}
+    - target: {fileID: 7217433887157444811, guid: 76985b3ed959a8f4bb77c3f9c35c7d89,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32025,7 +32035,7 @@ PrefabInstance:
     - target: {fileID: 9000345858325734232, guid: 1b3e6d86a9eeea04aa560103ca235496,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9914449
       objectReference: {fileID: 0}
     - target: {fileID: 9000345858325734232, guid: 1b3e6d86a9eeea04aa560103ca235496,
         type: 3}
@@ -32035,7 +32045,7 @@ PrefabInstance:
     - target: {fileID: 9000345858325734232, guid: 1b3e6d86a9eeea04aa560103ca235496,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.13052605
       objectReference: {fileID: 0}
     - target: {fileID: 9000345858325734232, guid: 1b3e6d86a9eeea04aa560103ca235496,
         type: 3}
@@ -32050,7 +32060,7 @@ PrefabInstance:
     - target: {fileID: 9000345858325734232, guid: 1b3e6d86a9eeea04aa560103ca235496,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9000345858325734232, guid: 1b3e6d86a9eeea04aa560103ca235496,
         type: 3}
@@ -32357,6 +32367,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1064559328}
     m_Modifications:
+    - target: {fileID: 3374352302844919052, guid: 71ccc14520372f44eb6f708528b4f83c,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1399216087}
     - target: {fileID: 3973205354175959063, guid: 71ccc14520372f44eb6f708528b4f83c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32588,6 +32603,7 @@ MonoBehaviour:
   _speed: 2
   isRepeating: 1
   isActive: 1
+  isFirstLevel: 0
 --- !u!1001 &6782593580387115091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32756,7 +32772,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8019561081462455976}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33523,7 +33539,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e12ba48ec64252469759dc0e42c1056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OpensOrCloses: 1
   Open: 1
+  OverrideButtons: 0
   endLevelEvent: {fileID: 0}
   isSceneLoader: 0
   sceneToLoad:

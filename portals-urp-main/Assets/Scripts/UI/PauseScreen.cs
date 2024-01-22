@@ -7,6 +7,13 @@ public class PauseScreen : MonoBehaviour
 {
     [SerializeField] private GameObject PauseMenu;
 
+    private Restart restart;
+
+    private void Start()
+    {
+        restart = GetComponentInParent<Restart>();
+    }
+
     public void PauseGame()
     {
         PauseMenu.SetActive(true);
@@ -30,7 +37,7 @@ public class PauseScreen : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(0);
+        restart.RestartScene();
     }
 
     public void QuitGame()

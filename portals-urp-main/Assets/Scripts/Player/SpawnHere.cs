@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpawnHere : MonoBehaviour
 {
-    [SerializeField] private bool spawnHere;
-    [SerializeField] private bool hasPortalGun;
+    [SerializeField] public bool spawnHere;
+    [SerializeField] public bool hasPortalGun;
 
     private Transform player;
 
@@ -27,7 +27,7 @@ public class SpawnHere : MonoBehaviour
         }
     }
 
-    private void SetPosition()
+    public void SetPosition()
     {
         player.position = transform.position;
         player.rotation = transform.rotation;

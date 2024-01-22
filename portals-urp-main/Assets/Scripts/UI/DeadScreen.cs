@@ -7,6 +7,13 @@ public class DeadScreen : MonoBehaviour
 {
     [SerializeField] private GameObject deathScreen;
 
+    private Restart restart;
+
+    private void Start()
+    {
+        restart = GetComponentInParent<Restart>();
+    }
+
     public void EnableDeathScreen()
     {
         if (GameManager.Instance.playerCanDie)
@@ -24,7 +31,7 @@ public class DeadScreen : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(0);
+        restart.RestartScene();
     }
 
     public void QuitGame()

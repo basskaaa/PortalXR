@@ -4563,6 +4563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpensOrCloses: 0
   Open: 0
+  OverrideButtons: 0
   endLevelEvent: {fileID: 11400000, guid: 72df6c4219125b34c931950c7c423f95, type: 2}
   isSceneLoader: 1
   sceneToLoad:
@@ -10613,8 +10614,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9193801513866180393, guid: 1b3e6d86a9eeea04aa560103ca235496,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1547441940}
   m_SourcePrefab: {fileID: 100100000, guid: 1b3e6d86a9eeea04aa560103ca235496, type: 3}
+--- !u!1 &1547441939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9193801513866180393, guid: 1b3e6d86a9eeea04aa560103ca235496,
+    type: 3}
+  m_PrefabInstance: {fileID: 1547441938}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1547441940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547441939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98d1d6d365b1214e97cd605d4c90a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintObj: {fileID: 6233242383499515278, guid: 3ef335fe0e25ad549bcab497862138c1, type: 3}
 --- !u!1 &1557089054
 GameObject:
   m_ObjectHideFlags: 0
@@ -15960,6 +15984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpensOrCloses: 1
   Open: 1
+  OverrideButtons: 0
   endLevelEvent: {fileID: 0}
   isSceneLoader: 0
   sceneToLoad:
@@ -16025,6 +16050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpensOrCloses: 1
   Open: 0
+  OverrideButtons: 0
   endLevelEvent: {fileID: 0}
   isSceneLoader: 0
   sceneToLoad:
@@ -16880,6 +16906,7 @@ MonoBehaviour:
   openSound: {fileID: 11400000, guid: 48c321c23b4ef5a4f90029ecc69fc741, type: 2}
   closeSound: {fileID: 11400000, guid: d3301ab0f9d3d674aa3aa339c370f037, type: 2}
   doorOpenEvent: {fileID: 11400000, guid: 883ac257ca23289458f288ae8a8bbfa9, type: 2}
+  hasTriggeredFinal: 0
 --- !u!23 &2002880225157343370
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17189,6 +17216,7 @@ MonoBehaviour:
   openSound: {fileID: 11400000, guid: 48c321c23b4ef5a4f90029ecc69fc741, type: 2}
   closeSound: {fileID: 11400000, guid: d3301ab0f9d3d674aa3aa339c370f037, type: 2}
   doorOpenEvent: {fileID: 11400000, guid: 883ac257ca23289458f288ae8a8bbfa9, type: 2}
+  hasTriggeredFinal: 0
 --- !u!114 &2544656488388629825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18074,6 +18102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpensOrCloses: 1
   Open: 0
+  OverrideButtons: 0
   endLevelEvent: {fileID: 0}
   isSceneLoader: 0
   sceneToLoad:
@@ -18280,6 +18309,7 @@ MonoBehaviour:
   openSound: {fileID: 11400000, guid: 48c321c23b4ef5a4f90029ecc69fc741, type: 2}
   closeSound: {fileID: 11400000, guid: d3301ab0f9d3d674aa3aa339c370f037, type: 2}
   doorOpenEvent: {fileID: 11400000, guid: 883ac257ca23289458f288ae8a8bbfa9, type: 2}
+  hasTriggeredFinal: 0
 --- !u!23 &4046264072983608982
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19625,6 +19655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpensOrCloses: 1
   Open: 1
+  OverrideButtons: 0
   endLevelEvent: {fileID: 0}
   isSceneLoader: 0
   sceneToLoad:

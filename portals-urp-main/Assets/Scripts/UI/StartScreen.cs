@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class StartScreen : MonoBehaviour
 {
+    [SerializeField] SceneField startBackground;
     [SerializeField] SceneField persistantScene;
     [SerializeField] SceneField[] sceneToLoad;
 
+
+    private void Start()
+    {
+        SceneManager.LoadSceneAsync(startBackground, LoadSceneMode.Additive);
+    }
     public void LoadStartingScenes()
     {
         SceneManager.LoadSceneAsync(persistantScene);
