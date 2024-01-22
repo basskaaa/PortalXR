@@ -221,6 +221,16 @@ PrefabInstance:
       propertyPath: m_InertiaTensor.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3587486287079936350, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3587486287550246009, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3790509055617370746, guid: dd6dc1e624175ca488ec48574edd6df2,
         type: 3}
       propertyPath: m_Name

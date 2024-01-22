@@ -6,6 +6,7 @@ public class DoorTrigger : MonoBehaviour
 {
     [SerializeField] private bool OpensOrCloses = true;
     [SerializeField] private bool Open;
+    [SerializeField] private bool OverrideButtons = false;
 
     [SerializeField] GameEvent endLevelEvent;
 
@@ -28,10 +29,18 @@ public class DoorTrigger : MonoBehaviour
         if (OpensOrCloses && Open && other.gameObject.CompareTag("Player"))
         {
             door.OpenDoors();
+            if (OverrideButtons)
+            {
+                door.hasTriggeredFinal = true;
+            }
         }
         if (OpensOrCloses && !Open && other.gameObject.CompareTag("Player"))
         {
             door.CloseDoors();
+            if (OverrideButtons)
+            {
+                door.hasTriggeredFinal = true;
+            }
         }
 
         if (isSceneLoader && !loaded)

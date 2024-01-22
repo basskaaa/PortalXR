@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Testing.unity
-    guid: 20278a2d46609b947b003541b46938b4
-  - enabled: 1
     path: Assets/Scenes/PORTAL_START.unity
     guid: c12ec27807094a84ba1d168bf9ab2db4
+  - enabled: 0
+    path: Assets/Scenes/Testing.unity
+    guid: 20278a2d46609b947b003541b46938b4
   - enabled: 1
     path: Assets/Scenes/PERSISTANTOBJECTS.unity
     guid: 828c0e57814ad7440b9cd7e7d7920b19
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PORTAL_L3.unity
     guid: ce9b1bfcb19c7484ea075433d9bbfba5
+  - enabled: 1
+    path: Assets/Scenes/PORTAL_L4.unity
+    guid: e3a15d248e117c3478ad18a2ee5a2da2
   m_configObjects: {}

@@ -1,13 +1,9 @@
 sceneSetups:
-- path: Assets/Scenes/PORTAL_L4.unity
+- path: Assets/Scenes/PORTAL_L3.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
-- path: Assets/Scenes/PORTAL_L3.unity
-  isLoaded: 1
-  isActive: 0
-  isSubScene: 0
-- path: Assets/Scenes/PERSISTANTOBJECTS.unity
+- path: Assets/Scenes/PORTAL_L4.unity
   isLoaded: 1
   isActive: 0
   isSubScene: 0

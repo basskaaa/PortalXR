@@ -12511,7 +12511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b113deb7e68a9134ab209794ceb22c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnHere: 1
+  spawnHere: 0
   hasPortalGun: 0
 --- !u!1 &1769275679
 GameObject:

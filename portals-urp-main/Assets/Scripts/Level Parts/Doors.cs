@@ -18,6 +18,7 @@ public class Doors : MonoBehaviour
     [SerializeField] private GameEvent doorOpenEvent;
 
     private bool isOpen;
+    [HideInInspector] public bool hasTriggeredFinal;
 
     private void Start()
     {
@@ -32,11 +33,11 @@ public class Doors : MonoBehaviour
 
     private void Update()
     {
-        if (CheckTriggers() && hasEventTriggers) 
+        if (CheckTriggers() && hasEventTriggers && !hasTriggeredFinal) 
         { 
             OpenDoors();
         }
-        if (hasEventTriggers && !CheckTriggers())
+        if (hasEventTriggers && !CheckTriggers() && !hasTriggeredFinal)
         {
             CloseDoors();
         }
