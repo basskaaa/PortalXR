@@ -67,7 +67,7 @@ public class Portal : MonoBehaviour
                 }
             }
 
-            Debug.Log("In portal trigger");
+            //Debug.Log("In portal trigger");
             portalObjects.Add(obj);
             obj.SetIsInPortal(this, OtherPortal, wallCollider);
         }

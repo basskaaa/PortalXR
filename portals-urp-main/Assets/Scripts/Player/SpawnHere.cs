@@ -9,9 +9,24 @@ public class SpawnHere : MonoBehaviour
 
     private Transform player;
 
-    protected void Awake()
+    private Restart restart;
+
+
+
+    protected void Start()
     { 
         player = FindObjectOfType<FirstPersonController>().transform;
+
+        restart = FindObjectOfType<Restart>();
+        if (restart != null ) 
+        {
+            Debug.Log("Found restart");
+            restart.spawnHere = this;
+        }
+        else
+        {
+            Debug.Log("Not found restart");
+        }
 
         if (spawnHere)
         {
@@ -20,16 +35,23 @@ public class SpawnHere : MonoBehaviour
 
         if (hasPortalGun)
         {
-            GameManager.Instance.playerHasPortalGun = true;
-            UiManager.Instance.GetPortalGun();
-            FindObjectOfType<PortalPlacement>().canPlacePortals = true;
-            FindObjectOfType<Crosshair>().enabled = true;
+            SetPortalGun();
         }
     }
 
     public void SetPosition()
     {
+        player = FindObjectOfType<FirstPersonController>().transform;
+
         player.position = transform.position;
         player.rotation = transform.rotation;
+    }
+
+    public void SetPortalGun()
+    {
+        GameManager.Instance.playerHasPortalGun = true;
+        UiManager.Instance.GetPortalGun();
+        FindObjectOfType<PortalPlacement>().canPlacePortals = true;
+        FindObjectOfType<Crosshair>().enabled = true;
     }
 }

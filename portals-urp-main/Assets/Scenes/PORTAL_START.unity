@@ -2228,7 +2228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startBackground:
     _sceneAsset: {fileID: 102900000, guid: 20278a2d46609b947b003541b46938b4, type: 3}
-    _sceneName: Testing
+    _sceneName: StartBackground
   persistantScene:
     _sceneAsset: {fileID: 102900000, guid: 828c0e57814ad7440b9cd7e7d7920b19, type: 3}
     _sceneName: PERSISTANTOBJECTS

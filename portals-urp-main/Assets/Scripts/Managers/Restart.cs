@@ -7,39 +7,41 @@ public class Restart : MonoBehaviour
 {
     [SerializeField] private SceneField persistant;
     [SerializeField] private SceneField[] scenes;
+    public SpawnHere spawnHere;
 
     [SerializeField] int sceneCount = 0;
 
     [SerializeField] GameEvent portalGunAcquired;
+    [SerializeField] GameEvent resetPortals;
+
+    Transform oldParent;
+
+
+    private void Awake()
+    {
+        oldParent = FindObjectOfType<Player>().transform.parent;
+    }
 
     public void NextScene()
     {
+        Debug.Log("Next scene");
+
         sceneCount++;
     }
 
     public void RestartScene()
     {
-        SceneManager.LoadScene(persistant);
+        resetPortals.Raise();
         Debug.Log(sceneCount);
-        SceneManager.LoadScene(scenes[sceneCount], LoadSceneMode.Additive);
+        FindObjectOfType<Player>().gameObject.transform.SetParent(oldParent);
+        SceneSwapManager.Instance.UnloadScene(scenes[sceneCount]);
 
-        SpawnHere spawnHere = FindObjectOfType<SpawnHere>();
-        Transform player = FindObjectOfType<Player>().transform;
-
-        if (spawnHere != null)
-        {
-            spawnHere.spawnHere = true;
-            spawnHere.hasPortalGun = true;
-            spawnHere.SetPosition();
-        }
-        else
-        {
-            Debug.Log("Cant find spawn here");
-        }
+        spawnHere.SetPosition();
+        //spawnHere[spawnIndex].SetPortalGun();
+        Debug.Log("spawned at " + sceneCount);
 
         Time.timeScale = 1.0f;
-        portalGunAcquired.Raise();
-        GameManager.Instance.playerHasPortalGun = true;
-        FindObjectOfType<Crosshair>().transform.gameObject.SetActive(true);
+        SceneSwapManager.Instance.SwapScene(scenes[sceneCount]);
+        //portalGunAcquired.Raise();
     }
 }

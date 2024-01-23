@@ -64,7 +64,7 @@ public class MovingPlatform : MonoBehaviour
         {
             _oldParent = other.transform.parent; 
             other.transform.SetParent(transform);
-            Debug.Log(other.name + " " + gameObject.name);
+            //Debug.Log(other.name + " " + gameObject.name);
         }
     }
 
@@ -75,7 +75,7 @@ public class MovingPlatform : MonoBehaviour
             if (_oldParent != null) 
             {
                 other.transform.SetParent(_oldParent);
-                Debug.Log(other.name + " " + _oldParent.name);
+                //Debug.Log(other.name + " " + _oldParent.name);
                 return;
             }
             other.transform.SetParent(null);

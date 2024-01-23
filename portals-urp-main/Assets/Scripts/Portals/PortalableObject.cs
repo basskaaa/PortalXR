@@ -71,7 +71,7 @@ public class PortalableObject : MonoBehaviour
 
         ++inPortalCount;
 
-        Debug.Log("Is in portal");
+        Debug.Log(wallCollider.gameObject.name);
     }
 
     public void ExitPortal(Collider wallCollider)
@@ -84,12 +84,12 @@ public class PortalableObject : MonoBehaviour
             cloneObject.SetActive(false);
         }
 
-        Debug.Log("Exit portal");
+        //Debug.Log("Exit portal");
     }
 
     public virtual void Warp()
     {
-        Debug.Log("Warp");
+        //Debug.Log("Warp");
 
         AudioManager.Instance.PlaySound(enterPortalSound.AudioClip, enterPortalSound.Volume);
 

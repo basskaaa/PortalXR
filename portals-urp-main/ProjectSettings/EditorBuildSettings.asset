@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/PORTAL_START.unity
     guid: c12ec27807094a84ba1d168bf9ab2db4
   - enabled: 1
-    path: Assets/Scenes/Testing.unity
+    path: Assets/Scenes/StartBackground.unity
     guid: 20278a2d46609b947b003541b46938b4
   - enabled: 1
     path: Assets/Scenes/PERSISTANTOBJECTS.unity

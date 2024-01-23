@@ -4,42 +4,45 @@ using UnityEngine;
 
 public class InteractHint : MonoBehaviour
 {
+    public bool isHinting = true;
+
     [SerializeField] private GameObject hintObj;
 
     private Transform InteractorSource;
-    private float InteractRange = 5;
+    [SerializeField] private float InteractRange = 4;
 
     private void Start()
     {
         InteractorSource = FindObjectOfType<PortalCamera>().transform;
-        hintObj = FindObjectOfType<InteractHintUi>().gameObject; 
-        HideHint();
     }
 
     private void Update()
     {
-        Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
-        if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
+        if (isHinting)
         {
-            if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+            Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
+            if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
             {
-                ShowHint();
+                if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+                {
+                    ShowHint();
+                }
             }
-        }
 
-        else
-        {
-            HideHint();
+            else
+            {
+                HideHint();
+            }
         }
     }
 
     private void ShowHint()
     {
-        hintObj.SetActive(true);
+        hintObj.GetComponentInChildren<Transform>().gameObject.SetActive(true);
     }
 
     private void HideHint()
     {
-        hintObj.SetActive(false);
+        hintObj.GetComponentInChildren<Transform>().gameObject.SetActive(false);
     }
 }
