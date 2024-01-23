@@ -9,7 +9,7 @@ public class HoldableItem : MonoBehaviour, IInteractable
     private Rigidbody rb;
     private Collider itemCollider;
 
-    [HideInInspector] public bool isHeld = false;
+    public bool isHeld = false;
 
     [SerializeField] private bool isTurret;
     [SerializeField] private bool isBox;

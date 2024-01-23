@@ -9,6 +9,7 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private float _speed;
 
     [SerializeField] private bool isRepeating = true;
+    [SerializeField] private bool isReturning = false;
     [SerializeField] private bool isActive = true;
     [SerializeField] private bool isFirstLevel = false;
 
@@ -39,7 +40,7 @@ public class MovingPlatform : MonoBehaviour
             transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
             transform.rotation = Quaternion.Lerp(_previousWaypoint.rotation, _targetWaypoint.rotation, elapsedPercentage);
 
-            if (elapsedPercentage >= 1 && isRepeating)
+            if (elapsedPercentage >= 1 && (isRepeating || isReturning))
             {
                 TargetNextWaypoint();
             }
@@ -50,6 +51,10 @@ public class MovingPlatform : MonoBehaviour
     {
         _previousWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
         _targetWaypointIndex = _waypointPath.GetNextWaypointIndex(_targetWaypointIndex);
+        if (isReturning && _targetWaypointIndex == 0)
+        {
+            return;
+        }
         _targetWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
 
         _elapsedTime = 0;

@@ -44,6 +44,7 @@ public class TurretBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             inFireRange = true;
+            Debug.Log("In range");
         }
     }
 
@@ -76,7 +77,7 @@ public class TurretBehaviour : MonoBehaviour
 
         if (Physics.Raycast(gameObject.transform.position, player.transform.position, out hit) && hit.transform.gameObject.CompareTag("Player"))
         {
-            //Debug.Log("Hit");
+            Debug.Log("Hit");
             if (!isPlayingLensSound)
             {
                 isPlayingLensSound = true;

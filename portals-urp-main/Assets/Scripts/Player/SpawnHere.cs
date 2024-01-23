@@ -52,6 +52,6 @@ public class SpawnHere : MonoBehaviour
         GameManager.Instance.playerHasPortalGun = true;
         UiManager.Instance.GetPortalGun();
         FindObjectOfType<PortalPlacement>().canPlacePortals = true;
-        FindObjectOfType<Crosshair>().enabled = true;
+        //FindObjectOfType<Crosshair>().enabled = true;
     }
 }

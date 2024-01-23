@@ -9088,7 +9088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHinting: 1
-  hintObj: {fileID: 6233242383499515278, guid: 3ef335fe0e25ad549bcab497862138c1, type: 3}
+  hintText: {fileID: 0}
   InteractRange: 4
 --- !u!1 &1557089054
 GameObject:

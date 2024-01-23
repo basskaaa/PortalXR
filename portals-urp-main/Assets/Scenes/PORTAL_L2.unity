@@ -11182,7 +11182,7 @@ GameObject:
   - component: {fileID: 1705515447}
   - component: {fileID: 1705515446}
   - component: {fileID: 1705515445}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16384,7 +16384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b113deb7e68a9134ab209794ceb22c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnHere: 1
+  spawnHere: 0
   hasPortalGun: 0
 --- !u!4 &2137851246
 Transform:
