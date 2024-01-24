@@ -11,7 +11,7 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private bool isRepeating = true;
     [SerializeField] private bool isReturning = false;
     [SerializeField] private bool isActive = true;
-    [SerializeField] private bool isFirstLevel = false;
+    [SerializeField] private bool needsTwo = false;
 
     private int _targetWaypointIndex;
     private int activateCheck = 0;
@@ -22,7 +22,8 @@ public class MovingPlatform : MonoBehaviour
     private float _timeToWaypoint;
     private float _elapsedTime;
 
-    private Transform _oldParent;
+    private Transform _oldPlayerParent;
+    private Transform _oldIntParent;
 
     void Start()
     {
@@ -53,6 +54,8 @@ public class MovingPlatform : MonoBehaviour
         _targetWaypointIndex = _waypointPath.GetNextWaypointIndex(_targetWaypointIndex);
         if (isReturning && _targetWaypointIndex == 0)
         {
+            Debug.Log("Platform reached destination");
+            isActive = false;
             return;
         }
         _targetWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
@@ -65,9 +68,16 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Interactable"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            _oldParent = other.transform.parent; 
+            _oldPlayerParent = other.transform.parent; 
+            other.transform.SetParent(transform);
+            //Debug.Log(other.name + " " + gameObject.name);
+        }
+
+        if (other.gameObject.CompareTag("Interactable"))
+        {
+            _oldIntParent = other.transform.parent;
             other.transform.SetParent(transform);
             //Debug.Log(other.name + " " + gameObject.name);
         }
@@ -75,12 +85,31 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Interactable"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            if (_oldParent != null) 
+            if (_oldPlayerParent != null) 
             {
-                other.transform.SetParent(_oldParent);
-                //Debug.Log(other.name + " " + _oldParent.name);
+                other.transform.SetParent(_oldPlayerParent);
+                Debug.Log(other.name + " parent is " + other.transform.parent);
+                if (other.transform.parent != _oldPlayerParent)
+                {
+                    Debug.Log("parent incorrect");
+                }
+                return;
+            }
+            other.transform.SetParent(null);
+        }
+
+        if (other.gameObject.CompareTag("Interactable"))
+        {
+            if (_oldIntParent != null)
+            {
+                other.transform.SetParent(_oldIntParent);
+                Debug.Log(other.name + " parent is " + other.transform.parent);
+                if (other.transform.parent != _oldIntParent)
+                {
+                    Debug.Log("parent incorrect");
+                }
                 return;
             }
             other.transform.SetParent(null);
@@ -89,7 +118,7 @@ public class MovingPlatform : MonoBehaviour
 
     public void ActivatePlatform()
     {
-        if (!isFirstLevel)
+        if (needsTwo)
         {
             activateCheck++;
             if (activateCheck != 2)

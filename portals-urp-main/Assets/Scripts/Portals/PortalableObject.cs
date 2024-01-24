@@ -71,7 +71,7 @@ public class PortalableObject : MonoBehaviour
 
         ++inPortalCount;
 
-        Debug.Log(wallCollider.gameObject.name);
+        //Debug.Log(wallCollider.gameObject.name);
     }
 
     public void ExitPortal(Collider wallCollider)

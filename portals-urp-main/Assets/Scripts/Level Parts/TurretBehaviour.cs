@@ -6,6 +6,7 @@ public class TurretBehaviour : MonoBehaviour
 {
     [SerializeField] GameEvent playerDiedEvent;
     [SerializeField] Transform[] guns;
+    [SerializeField] Transform aimPos;
     [SerializeField] GameObject muzzleFlash;
     [SerializeField] GameObject bullet;
     private LineRenderer[] lineRenderers;
@@ -25,10 +26,12 @@ public class TurretBehaviour : MonoBehaviour
     [SerializeField] private AudioClipHolder[] lensSound;
     private bool isPlayingLensSound = false;
 
+    private Transform target;
+
     private void Start()
     {
         lineRenderers = GetComponentsInChildren<LineRenderer>();
-        player = FindObjectOfType<FirstPersonController>().gameObject;
+        player = FindObjectOfType<Player>().gameObject;
     }
 
     private void Update()
@@ -75,9 +78,12 @@ public class TurretBehaviour : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(gameObject.transform.position, player.transform.position, out hit) && hit.transform.gameObject.CompareTag("Player"))
+        //if (Physics.Raycast(aimPos.position, player.transform.position, out hit, Mathf.Infinity) && hit.transform.CompareTag("Player"))
+        if (Physics.Raycast(aimPos.position, player.transform.position, out hit, Mathf.Infinity))
         {
-            Debug.Log("Hit");
+            //Debug.Log("Hit");
+            Debug.DrawLine(aimPos.position, hit.transform.position);
+
             if (!isPlayingLensSound)
             {
                 isPlayingLensSound = true;

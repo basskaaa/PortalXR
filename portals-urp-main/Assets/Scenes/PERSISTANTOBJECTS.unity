@@ -131,6 +131,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 64744952547752545, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2620104496159084671, guid: dd6dc1e624175ca488ec48574edd6df2,
         type: 3}
       propertyPath: m_RootOrder
@@ -185,6 +190,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3095498351110931963, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189013224310711251, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: m_ImplicitTensor
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3790509055617370746, guid: dd6dc1e624175ca488ec48574edd6df2,
         type: 3}
