@@ -23,8 +23,22 @@ public class LaunchPad : MonoBehaviour
         if (obj != null)
         {
             animator.SetTrigger("Launch");
-            other.GetComponent<Rigidbody>().AddForce(direction.transform.forward * force, ForceMode.Force);
+            //other.GetComponent<Rigidbody>().AddForce(direction.transform.forward * force, ForceMode.Force);
+            other.GetComponent<Rigidbody>().AddForce(direction.transform.forward * force, ForceMode.Impulse);
             AudioManager.Instance.PlaySound(launchSound.AudioClip, launchSound.Volume);
+            if (other.GetComponent<FirstPersonController>() != null)
+            {
+                StartCoroutine(DisableController(other.gameObject));
+            }
         }
+    }
+
+    private IEnumerator DisableController(GameObject player)
+    {
+        player.GetComponent<FirstPersonController>().enabled = false;
+        player.GetComponent<PlayerCamera>().enabled = false;
+        yield return new WaitForSeconds(1f);
+        player.GetComponent<FirstPersonController>().enabled = true;
+        player.GetComponent<PlayerCamera>().enabled = true;
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class TurretBehaviour : MonoBehaviour
@@ -14,12 +15,15 @@ public class TurretBehaviour : MonoBehaviour
 
     [SerializeField] float aimDelay = 0.3f;
     [SerializeField] float waitToShoot = 1.5f;
+    [SerializeField] float continuousFireTime = 4f;
     [SerializeField] float fireRate = 0.1f;
     [SerializeField] float waitForTargetLost = 4f;
     [SerializeField] float bulletForce = 100f;
+    [SerializeField] float reloadTime = 2f;
 
     private bool inFireRange = false;
     public bool isShooting = false;
+    public bool continuousFire = true;
     [HideInInspector] public bool isDisplaced = false;
 
     [SerializeField] private AudioClipHolder shootSound;
@@ -84,14 +88,8 @@ public class TurretBehaviour : MonoBehaviour
             //Debug.Log("Hit");
             Debug.DrawLine(aimPos.position, hit.transform.position);
 
-            if (!isPlayingLensSound)
-            {
-                isPlayingLensSound = true;
-                int i = Random.Range(0, lensSound.Length);
-                AudioManager.Instance.PlaySound(lensSound[i].AudioClip, lensSound[i].Volume);
-            }
-
             StartCoroutine(DrawLine());
+            LensSound();
 
             if (!isShooting && !isDisplaced)
             {
@@ -99,6 +97,7 @@ public class TurretBehaviour : MonoBehaviour
             }
 
             isShooting = true;
+            StartCoroutine(StopShooting());
         }
         else
         {
@@ -127,9 +126,12 @@ public class TurretBehaviour : MonoBehaviour
     {
         isShooting = false;
         isPlayingLensSound = false;
-
-        // lens sound
+        LensSound();
+        
         yield return new WaitForSeconds(waitForTargetLost);
+
+        StopCoroutine(StopShooting());
+        continuousFire = true;
 
         if (!inFireRange)
         {
@@ -145,9 +147,9 @@ public class TurretBehaviour : MonoBehaviour
     private IEnumerator WaitToShoot()
     {
         yield return new WaitForSeconds(waitToShoot);
-        // turbine sound
 
-        StartCoroutine(Shoot());        
+        LensSound();
+        StartCoroutine(Shoot());
     }
 
     private IEnumerator Shoot()
@@ -161,7 +163,10 @@ public class TurretBehaviour : MonoBehaviour
                 yield return new WaitForSeconds(fireRate);
             }
 
-            StartCoroutine(Shoot());
+            if (continuousFire)
+            {
+                StartCoroutine(Shoot());
+            }
         }
     }
 
@@ -182,5 +187,24 @@ public class TurretBehaviour : MonoBehaviour
         clone = Instantiate(bullet, spawnPos.position, spawnPos.rotation);
         clone.GetComponent<Rigidbody>().AddForce(-(spawnPos.position - target) * bulletForce, ForceMode.Impulse);
         Destroy(clone, 0.5f);
+    }
+
+    private IEnumerator StopShooting()
+    {
+        continuousFire = true;
+        yield return new WaitForSeconds(waitToShoot + continuousFireTime);
+        continuousFire = false;
+        yield return new WaitForSeconds(reloadTime);
+        continuousFire = true;
+    }
+
+    private void LensSound()
+    {
+        if (!isPlayingLensSound)
+        {
+            isPlayingLensSound = true;
+            int i = Random.Range(0, lensSound.Length);
+            AudioManager.Instance.PlaySound(lensSound[i].AudioClip, lensSound[i].Volume);
+        }
     }
 }

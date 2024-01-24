@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PORTAL_L5.unity
     guid: a2949dd0aa3c5a64eb2b8ec10c13fba9
+  - enabled: 1
+    path: Assets/Scenes/PORTAL_L6.unity
+    guid: 09c56ec81ee820b43862b00a9f2193b7
   m_configObjects: {}

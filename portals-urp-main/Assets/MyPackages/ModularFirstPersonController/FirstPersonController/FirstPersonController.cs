@@ -16,7 +16,7 @@ using UnityEngine.UI;
 
 public class FirstPersonController : MonoBehaviour
 {
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     #region Camera Movement Variables
 
@@ -60,7 +60,7 @@ public class FirstPersonController : MonoBehaviour
     public float maxVelocityChange = 10f;
 
     // Internal Variables
-    private bool isWalking = false;
+    [HideInInspector] public bool isWalking = false;
 
     #region Sprint
 
@@ -83,7 +83,7 @@ public class FirstPersonController : MonoBehaviour
 
     // Internal Variables
     private CanvasGroup sprintBarCG;
-    private bool isSprinting = false;
+    [HideInInspector] public bool isSprinting = false;
     private float sprintRemaining;
     private float sprintBarWidth;
     private float sprintBarHeight;
@@ -135,12 +135,12 @@ public class FirstPersonController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        crosshairObject = GetComponentInChildren<Image>();
+        //crosshairObject = GetComponentInChildren<Image>();
 
         // Set internal variables
-        playerCamera.fieldOfView = fov;
+        //playerCamera.fieldOfView = fov;
         originalScale = transform.localScale;
-        jointOriginalPos = joint.localPosition;
+        //jointOriginalPos = joint.localPosition;
 
         if (!unlimitedSprint)
         {
@@ -151,20 +151,20 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
-        if(lockCursor)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-
-        if(crosshair)
-        {
-            crosshairObject.sprite = crosshairImage;
-            crosshairObject.color = crosshairColor;
-        }
-        else
-        {
-            crosshairObject.gameObject.SetActive(false);
-        }
+        //if(lockCursor)
+        //{
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //}
+        //
+        //if(crosshair)
+        //{
+        //    crosshairObject.sprite = crosshairImage;
+        //    crosshairObject.color = crosshairColor;
+        //}
+        //else
+        //{
+        //    crosshairObject.gameObject.SetActive(false);
+        //}
         
         #region Sprint Bar
         
@@ -205,69 +205,69 @@ public class FirstPersonController : MonoBehaviour
         #region Camera
 
         // Control camera movement
-        if(cameraCanMove)
-        {
-            yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
-
-            if (!invertCamera)
-            {
-                pitch -= mouseSensitivity * Input.GetAxis("Mouse Y");
-            }
-            else
-            {
-                // Inverted Y
-                pitch += mouseSensitivity * Input.GetAxis("Mouse Y");
-            }
-
-            // Clamp pitch between lookAngle
-            pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
-
-            transform.localEulerAngles = new Vector3(0, yaw, 0);
-            playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
-        }
+        //if(cameraCanMove)
+        //{
+        //    yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
+        //
+        //    if (!invertCamera)
+        //    {
+        //        pitch -= mouseSensitivity * Input.GetAxis("Mouse Y");
+        //    }
+        //    else
+        //    {
+        //        // Inverted Y
+        //        pitch += mouseSensitivity * Input.GetAxis("Mouse Y");
+        //    }
+        //
+        //    // Clamp pitch between lookAngle
+        //    pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
+        //
+        //    transform.localEulerAngles = new Vector3(0, yaw, 0);
+        //    playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
+        //}
 
         #region Camera Zoom
 
-        if (enableZoom)
-        {
-            // Changes isZoomed when key is pressed
-            // Behavior for toogle zoom
-            if(Input.GetKeyDown(zoomKey) && !holdToZoom && !isSprinting)
-            {
-                if (!isZoomed)
-                {
-                    isZoomed = true;
-                }
-                else
-                {
-                    isZoomed = false;
-                }
-            }
-
-            // Changes isZoomed when key is pressed
-            // Behavior for hold to zoom
-            if(holdToZoom && !isSprinting)
-            {
-                if(Input.GetKeyDown(zoomKey))
-                {
-                    isZoomed = true;
-                }
-                else if(Input.GetKeyUp(zoomKey))
-                {
-                    isZoomed = false;
-                }
-            }
-
-            // Lerps camera.fieldOfView to allow for a smooth transistion
-            if(isZoomed)
-            {
-                playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, zoomFOV, zoomStepTime * Time.deltaTime);
-            }
-            else if(!isZoomed && !isSprinting)
-            {
-                playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, fov, zoomStepTime * Time.deltaTime);
-            }
-        }
+        //if (enableZoom)
+        //{
+        //    // Changes isZoomed when key is pressed
+        //    // Behavior for toogle zoom
+        //    if(Input.GetKeyDown(zoomKey) && !holdToZoom && !isSprinting)
+        //    {
+        //        if (!isZoomed)
+        //        {
+        //            isZoomed = true;
+        //        }
+        //        else
+        //        {
+        //            isZoomed = false;
+        //        }
+        //    }
+        //
+        //    // Changes isZoomed when key is pressed
+        //    // Behavior for hold to zoom
+        //    if(holdToZoom && !isSprinting)
+        //    {
+        //        if(Input.GetKeyDown(zoomKey))
+        //        {
+        //            isZoomed = true;
+        //        }
+        //        else if(Input.GetKeyUp(zoomKey))
+        //        {
+        //            isZoomed = false;
+        //        }
+        //    }
+        //
+        //    // Lerps camera.fieldOfView to allow for a smooth transistion
+        //    if(isZoomed)
+        //    {
+        //        playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, zoomFOV, zoomStepTime * Time.deltaTime);
+        //    }
+        //    else if(!isZoomed && !isSprinting)
+        //    {
+        //        playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, fov, zoomStepTime * Time.deltaTime);
+        //    }
+        //}
 
         #endregion
         #endregion
@@ -360,7 +360,7 @@ public class FirstPersonController : MonoBehaviour
 
         if(enableHeadBob)
         {
-            HeadBob();
+            //HeadBob();
         }
     }
 
@@ -497,35 +497,35 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
-    private void HeadBob()
-    {
-        if(isWalking)
-        {
-            // Calculates HeadBob speed during sprint
-            if(isSprinting)
-            {
-                timer += Time.deltaTime * (bobSpeed + sprintSpeed);
-            }
-            // Calculates HeadBob speed during crouched movement
-            else if (isCrouched)
-            {
-                timer += Time.deltaTime * (bobSpeed * speedReduction);
-            }
-            // Calculates HeadBob speed during walking
-            else
-            {
-                timer += Time.deltaTime * bobSpeed;
-            }
-            // Applies HeadBob movement
-            joint.localPosition = new Vector3(jointOriginalPos.x + Mathf.Sin(timer) * bobAmount.x, jointOriginalPos.y + Mathf.Sin(timer) * bobAmount.y, jointOriginalPos.z + Mathf.Sin(timer) * bobAmount.z);
-        }
-        else
-        {
-            // Resets when play stops moving
-            timer = 0;
-            joint.localPosition = new Vector3(Mathf.Lerp(joint.localPosition.x, jointOriginalPos.x, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.y, jointOriginalPos.y, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.z, jointOriginalPos.z, Time.deltaTime * bobSpeed));
-        }
-    }
+    //private void HeadBob()
+    //{
+    //    if(isWalking)
+    //    {
+    //        // Calculates HeadBob speed during sprint
+    //        if(isSprinting)
+    //        {
+    //            timer += Time.deltaTime * (bobSpeed + sprintSpeed);
+    //        }
+    //        // Calculates HeadBob speed during crouched movement
+    //        else if (isCrouched)
+    //        {
+    //            timer += Time.deltaTime * (bobSpeed * speedReduction);
+    //        }
+    //        // Calculates HeadBob speed during walking
+    //        else
+    //        {
+    //            timer += Time.deltaTime * bobSpeed;
+    //        }
+    //        // Applies HeadBob movement
+    //        joint.localPosition = new Vector3(jointOriginalPos.x + Mathf.Sin(timer) * bobAmount.x, jointOriginalPos.y + Mathf.Sin(timer) * bobAmount.y, jointOriginalPos.z + Mathf.Sin(timer) * bobAmount.z);
+    //    }
+    //    else
+    //    {
+    //        // Resets when play stops moving
+    //        timer = 0;
+    //        joint.localPosition = new Vector3(Mathf.Lerp(joint.localPosition.x, jointOriginalPos.x, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.y, jointOriginalPos.y, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.z, jointOriginalPos.z, Time.deltaTime * bobSpeed));
+    //    }
+    //}
 }
 
 
