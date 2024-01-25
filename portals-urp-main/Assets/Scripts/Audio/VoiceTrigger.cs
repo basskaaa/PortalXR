@@ -24,7 +24,7 @@ public class VoiceTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && isTriggerCollider)
+        if (other.gameObject.CompareTag("Player") && isTriggerCollider && !hasBeenPlayed)
         {
             VoiceManager.Instance.AddVoiceLineToQueue(voiceHolder);
             hasBeenPlayed = true;

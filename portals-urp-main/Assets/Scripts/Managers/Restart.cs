@@ -13,6 +13,8 @@ public class Restart : MonoBehaviour
 
     [SerializeField] GameEvent portalGunAcquired;
     [SerializeField] GameEvent resetPortals;
+    [SerializeField] private GameEvent restartEvent;
+
 
     Transform oldParent;
 
@@ -32,6 +34,8 @@ public class Restart : MonoBehaviour
     public void RestartScene()
     {
         resetPortals.Raise();
+        restartEvent.Raise();
+
         Debug.Log(sceneCount);
         FindObjectOfType<Player>().gameObject.transform.SetParent(oldParent);
         SceneSwapManager.Instance.UnloadScene(scenes[sceneCount]);

@@ -116,10 +116,13 @@ MonoBehaviour:
     _sceneName: PORTAL_L4
   - _sceneAsset: {fileID: 102900000, guid: a2949dd0aa3c5a64eb2b8ec10c13fba9, type: 3}
     _sceneName: PORTAL_L5
+  - _sceneAsset: {fileID: 102900000, guid: 09c56ec81ee820b43862b00a9f2193b7, type: 3}
+    _sceneName: PORTAL_L6
   spawnHere: {fileID: 0}
   sceneCount: 1
   portalGunAcquired: {fileID: 11400000, guid: 7a0037b94eea1f14f8fbc0fe1ab0e3a7, type: 2}
   resetPortals: {fileID: 11400000, guid: 9a99de5f2137ef849b15f5ff8255d966, type: 2}
+  restartEvent: {fileID: 11400000, guid: db22e77dc0c30aa4caa70380b2984799, type: 2}
 --- !u!114 &7037522787025333270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,6 +1210,7 @@ GameObject:
   - component: {fileID: 2950181754362782631}
   - component: {fileID: 5133860391507168704}
   - component: {fileID: 5741328716758026626}
+  - component: {fileID: 2298173702463351849}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -1241,7 +1245,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 456439f2fdac1174d8515d15ea231945,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1339,6 +1343,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level1Music: {fileID: 11400000, guid: dcdd6eef1560eaa4882fa35156480add, type: 2}
+--- !u!114 &2298173702463351849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2574742267206167045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 069e564f7c384c04dafed5cc9b0e3c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: f390580169185b94a87dd0bad1ee3f9b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5741328716758026626}
+        m_TargetAssemblyTypeName: MusicManager, Assembly-CSharp
+        m_MethodName: PlayMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2776550890823571612
 GameObject:
   m_ObjectHideFlags: 0
@@ -4188,6 +4220,7 @@ GameObject:
   - component: {fileID: 241325079217533693}
   - component: {fileID: 2880529652964101224}
   - component: {fileID: 6964918968211827348}
+  - component: {fileID: 3637650278967461560}
   m_Layer: 0
   m_Name: EndLevelMask
   m_TagString: Untagged
@@ -4299,6 +4332,18 @@ MonoBehaviour:
           m_StringArgument: Play
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3637650278967461560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7775372298876157541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3438d857cc3a7f2488f935d3c1d5df77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7889773489402682303
 GameObject:
   m_ObjectHideFlags: 0
@@ -5089,7 +5134,7 @@ PrefabInstance:
     - target: {fileID: 6796019526768690682, guid: 9ef31d4720ffe5243b7a8ab6f1b9c90f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6796019526768690682, guid: 9ef31d4720ffe5243b7a8ab6f1b9c90f,
         type: 3}
@@ -5170,7 +5215,23 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 315901403037244420}
+    - targetCorrespondingSourceObject: {fileID: 8569688443640372839, guid: 9ef31d4720ffe5243b7a8ab6f1b9c90f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6679591882571625448}
   m_SourcePrefab: {fileID: 100100000, guid: 9ef31d4720ffe5243b7a8ab6f1b9c90f, type: 3}
+--- !u!114 &1942821317934272183 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2691904057192947202, guid: 9ef31d4720ffe5243b7a8ab6f1b9c90f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4588563064481927349}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278359464277708498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e998b3778d01be4e996df1434412c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5278359464277708498 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8569688443640372839, guid: 9ef31d4720ffe5243b7a8ab6f1b9c90f,
@@ -5194,7 +5255,7 @@ MonoBehaviour:
   invertCamera: 0
   cameraCanMove: 1
   mouseSensitivity: 2
-  maxLookAngle: 50
+  maxLookAngle: 90
   lockCursor: 1
   crosshair: 1
   crosshairImage: {fileID: 21300000, guid: be4ce60e2c9768c44b9b10b9c5258045, type: 3}
@@ -5220,6 +5281,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8b84f4582ce0242ae2fc100ada6f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6679591882571625448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278359464277708498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 069e564f7c384c04dafed5cc9b0e3c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: db22e77dc0c30aa4caa70380b2984799, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1942821317934272183}
+        m_TargetAssemblyTypeName: PlayerDead, Assembly-CSharp
+        m_MethodName: StartPlayerControls
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6111630433071428963 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7745354305357227478, guid: 9ef31d4720ffe5243b7a8ab6f1b9c90f,

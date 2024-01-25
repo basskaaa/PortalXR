@@ -18,9 +18,9 @@ public class PauseScreen : MonoBehaviour
     {
         PauseMenu.SetActive(true);
         Time.timeScale = 0.0f;
-        FindObjectOfType<FirstPersonController>().cameraCanMove = false;
+        FindObjectOfType<PlayerCamera>().cameraCanMove = false;
+        FindObjectOfType<PlayerCamera>().lockCursor = false;
         FindObjectOfType<FirstPersonController>().playerCanMove = false;
-        FindObjectOfType<FirstPersonController>().lockCursor = false;
         FindObjectOfType<PortalPlacement>().canPlacePortals = false;
         Cursor.lockState = CursorLockMode.None;
     }
@@ -29,7 +29,7 @@ public class PauseScreen : MonoBehaviour
     {
         PauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
-        FindObjectOfType<FirstPersonController>().cameraCanMove = true;
+        FindObjectOfType<PlayerCamera>().cameraCanMove = true;
         FindObjectOfType<FirstPersonController>().playerCanMove = true;
         Cursor.lockState = CursorLockMode.Locked;
         FindObjectOfType<PortalPlacement>().canPlacePortals = true;

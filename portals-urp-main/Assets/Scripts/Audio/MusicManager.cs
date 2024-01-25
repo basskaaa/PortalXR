@@ -6,7 +6,7 @@ public class MusicManager : MonoBehaviour
 {
     public AudioClipHolder level1Music;
 
-    private void Start()
+    public void PlayMusic()
     {
         AudioManager.Instance.PlayMusic(level1Music.AudioClip, level1Music.Volume);
     }

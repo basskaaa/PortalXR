@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class EnableOnTrigger : MonoBehaviour
 {
-    [SerializeField] GameObject obj;
+    [SerializeField] GameObject[] objectEnabled;
+    [SerializeField] GameObject[] objectDisabled;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            obj.SetActive(true);
+            foreach (GameObject go in objectEnabled) 
+            { 
+                go.SetActive(true);
+            }
+
+            foreach (GameObject go in objectDisabled)
+            {
+                go.SetActive(false);
+            }
         }
     }
 }

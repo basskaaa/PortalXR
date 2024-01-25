@@ -14,7 +14,10 @@ public class LaunchPad : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<Player>().gameObject;
+        if (FindObjectOfType<Player>() != null)
+        {
+            player = FindObjectOfType<Player>().gameObject;
+        }
         animator = GetComponent<Animator>();
         direction = GetComponentInChildren<LaunchPadDirection>().transform;
     }

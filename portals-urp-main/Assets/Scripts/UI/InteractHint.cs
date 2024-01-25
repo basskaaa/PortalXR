@@ -19,6 +19,7 @@ public class InteractHint : MonoBehaviour
     private void Start()
     {
         InteractorSource = FindObjectOfType<PortalCamera>().transform;
+        hintText.enabled = true;
     }
 
     private void Update()
