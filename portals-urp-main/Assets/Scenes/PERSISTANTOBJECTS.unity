@@ -133,16 +133,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 64744952547752545, guid: dd6dc1e624175ca488ec48574edd6df2,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 241325079217533693, guid: dd6dc1e624175ca488ec48574edd6df2,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2620104496159084671, guid: dd6dc1e624175ca488ec48574edd6df2,
         type: 3}
       propertyPath: m_RootOrder
@@ -198,66 +188,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2880529652964101224, guid: dd6dc1e624175ca488ec48574edd6df2,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3790509055617370746, guid: dd6dc1e624175ca488ec48574edd6df2,
         type: 3}
       propertyPath: m_Name
       value: PERSISTANT
       objectReference: {fileID: 0}
-    - target: {fileID: 6964918968211827348, guid: dd6dc1e624175ca488ec48574edd6df2,
+    - target: {fileID: 7485032232960247947, guid: dd6dc1e624175ca488ec48574edd6df2,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6964918968211827348, guid: dd6dc1e624175ca488ec48574edd6df2,
-        type: 3}
-      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6964918968211827348, guid: dd6dc1e624175ca488ec48574edd6df2,
-        type: 3}
-      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: credits
       value: 
-      objectReference: {fileID: 1534075560}
-    - target: {fileID: 6964918968211827348, guid: dd6dc1e624175ca488ec48574edd6df2,
-        type: 3}
-      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartFadeInOut
-      objectReference: {fileID: 0}
-    - target: {fileID: 6964918968211827348, guid: dd6dc1e624175ca488ec48574edd6df2,
-        type: 3}
-      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ScreenFadeIn, Assembly-CSharp
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3637650278967461560, guid: dd6dc1e624175ca488ec48574edd6df2, type: 3}
+      objectReference: {fileID: 1728662972}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7775372298876157541, guid: dd6dc1e624175ca488ec48574edd6df2,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1534075560}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd6dc1e624175ca488ec48574edd6df2, type: 3}
---- !u!1 &1534075553 stripped
+--- !u!1 &1728662972 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 7775372298876157541, guid: dd6dc1e624175ca488ec48574edd6df2,
+  m_CorrespondingSourceObject: {fileID: 3941552268037839220, guid: dd6dc1e624175ca488ec48574edd6df2,
     type: 3}
   m_PrefabInstance: {fileID: 321473523}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1534075560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1534075553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eb273a38b64d404bafa0fd7a383ddfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

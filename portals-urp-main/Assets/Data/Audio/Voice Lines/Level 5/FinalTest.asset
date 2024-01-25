@@ -16,9 +16,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 970b9959eec7d8842924ec0e20124f19, type: 3}
   - {fileID: 8300000, guid: 562e06c8d05ec424981bda10a9377098, type: 3}
   - {fileID: 8300000, guid: 4d700c2438ff0194585d83ad150e5212, type: 3}
-  - {fileID: 8300000, guid: 1817035d67cd8984d8b87282b3af7c40, type: 3}
   VoiceLineDelay:
   - 1
   - 0
   - 3
-  - 0
