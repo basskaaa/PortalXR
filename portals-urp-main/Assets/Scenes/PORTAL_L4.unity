@@ -19473,6 +19473,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 380393709}
     m_Modifications:
+    - target: {fileID: 4912949981711377880, guid: dad0d50f82b230d4daaf34050d152917,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.68768483
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912949981711377880, guid: dad0d50f82b230d4daaf34050d152917,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.16459379
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912949981711377880, guid: dad0d50f82b230d4daaf34050d152917,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.68768275
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912949981711377880, guid: dad0d50f82b230d4daaf34050d152917,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.16459328
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912949981711377880, guid: dad0d50f82b230d4daaf34050d152917,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -26.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 5163462300917703113, guid: dad0d50f82b230d4daaf34050d152917,
+        type: 3}
+      propertyPath: force
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 7451662652098508327, guid: dad0d50f82b230d4daaf34050d152917,
         type: 3}
       propertyPath: m_Name
@@ -35456,6 +35486,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 409817902}
     m_Modifications:
+    - target: {fileID: 5163462300917703113, guid: dad0d50f82b230d4daaf34050d152917,
+        type: 3}
+      propertyPath: force
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 7451662652098508327, guid: dad0d50f82b230d4daaf34050d152917,
         type: 3}
       propertyPath: m_Name
@@ -41156,8 +41191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b113deb7e68a9134ab209794ceb22c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnHere: 0
-  hasPortalGun: 0
+  spawnHere: 1
+  hasPortalGun: 1
 --- !u!4 &2137851246
 Transform:
   m_ObjectHideFlags: 0

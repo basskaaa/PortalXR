@@ -36,7 +36,7 @@ Transform:
   - {fileID: 4912949981711377880}
   - {fileID: 6083428775074299882}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &768317548568219415
 MeshFilter:
@@ -107,7 +107,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 1, z: 0.8}
+  m_Size: {x: 1, y: 1, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &1182248562113025153
 Animator:
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ba0eaa487a3134e95dd6e750be1cb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 50
+  force: 6000
   launchSound: {fileID: 11400000, guid: b1f3bc72c290bfe4c8a3fc0fb3290403, type: 2}
 --- !u!1 &8375973474690149560
 GameObject:

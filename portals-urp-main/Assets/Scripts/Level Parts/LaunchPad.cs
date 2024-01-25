@@ -5,15 +5,26 @@ using UnityEngine;
 public class LaunchPad : MonoBehaviour
 {
     private Animator animator;
-    private LaunchPadDirection direction;
+    private Transform direction;
 
     [SerializeField] private float force;
     [SerializeField] AudioClipHolder launchSound;
 
+    private GameObject player;
+
     private void Start()
     {
+        player = FindObjectOfType<Player>().gameObject;
         animator = GetComponent<Animator>();
-        direction = GetComponentInChildren<LaunchPadDirection>();
+        direction = GetComponentInChildren<LaunchPadDirection>().transform;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            player.GetComponent<Rigidbody>().AddForce(transform.forward * force, ForceMode.Force);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,7 +35,7 @@ public class LaunchPad : MonoBehaviour
         {
             animator.SetTrigger("Launch");
             //other.GetComponent<Rigidbody>().AddForce(direction.transform.forward * force, ForceMode.Force);
-            other.GetComponent<Rigidbody>().AddForce(direction.transform.forward * force, ForceMode.Impulse);
+            other.GetComponent<Rigidbody>().AddForce(direction.forward * force, ForceMode.Impulse);
             AudioManager.Instance.PlaySound(launchSound.AudioClip, launchSound.Volume);
             if (other.GetComponent<FirstPersonController>() != null)
             {
@@ -35,10 +46,10 @@ public class LaunchPad : MonoBehaviour
 
     private IEnumerator DisableController(GameObject player)
     {
-        player.GetComponent<FirstPersonController>().enabled = false;
-        player.GetComponent<PlayerCamera>().enabled = false;
+        //player.GetComponent<FirstPersonController>().enabled = false;
+        //player.GetComponent<PlayerCamera>().enabled = false;
         yield return new WaitForSeconds(1f);
-        player.GetComponent<FirstPersonController>().enabled = true;
-        player.GetComponent<PlayerCamera>().enabled = true;
+        //player.GetComponent<FirstPersonController>().enabled = true;
+        //player.GetComponent<PlayerCamera>().enabled = true;
     }
 }

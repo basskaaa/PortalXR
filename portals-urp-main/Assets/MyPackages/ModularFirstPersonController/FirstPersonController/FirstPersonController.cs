@@ -418,23 +418,29 @@ public class FirstPersonController : MonoBehaviour
             // All movement calculations while walking
             else
             {
-                isSprinting = false;
-
-                if (hideBarWhenFull && sprintRemaining == sprintDuration)
-                {
-                    sprintBarCG.alpha -= 3 * Time.deltaTime;
-                }
-
                 targetVelocity = transform.TransformDirection(targetVelocity) * walkSpeed;
 
                 // Apply a force that attempts to reach our target velocity
                 Vector3 velocity = rb.velocity;
-                Vector3 velocityChange = (targetVelocity - velocity);
-                velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-                velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-                velocityChange.y = 0;
 
-                rb.AddForce(velocityChange, ForceMode.VelocityChange);
+                if (isGrounded)
+                {
+                    Vector3 velocityChange = (targetVelocity - velocity);
+                    velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+                    velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+                    velocityChange.y = 0;
+
+                    rb.AddForce(velocityChange, ForceMode.VelocityChange);
+                }
+                else
+                {
+                    Vector3 velocityChange = (targetVelocity - velocity);
+                    velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+                    velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+                    velocityChange.y = 0;
+                
+                    rb.AddForce(velocityChange * 4, ForceMode.Force);
+                }
             }
         }
 
