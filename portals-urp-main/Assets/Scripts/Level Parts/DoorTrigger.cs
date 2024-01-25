@@ -14,6 +14,7 @@ public class DoorTrigger : MonoBehaviour
     [SerializeField] SceneField sceneToLoad;
     [SerializeField] bool isSceneUnloader = false;
     [SerializeField] SceneField sceneToUnload;
+    [SerializeField] bool isEndLevel = false;
 
     private Doors door;
     private bool loaded = false;
@@ -45,17 +46,21 @@ public class DoorTrigger : MonoBehaviour
 
         if (isSceneLoader && !loaded)
         {
-            endLevelEvent.Raise();
-            SceneSwapManager.Instance.SwapScene(sceneToLoad);
-            Debug.Log("Loading: " + sceneToLoad);
+            if (sceneToLoad != null) SceneSwapManager.Instance.SwapScene(sceneToLoad);
             loaded = true;
         }        
         if (isSceneUnloader && !unloaded)
         {
             Player.Instance.SetParent();
             SceneSwapManager.Instance.UnloadScene(sceneToUnload);
-            Debug.Log("Unloading: " + sceneToUnload);
+            //Debug.Log("Unloading: " + sceneToUnload);
             unloaded = true;
+        }
+
+        if (isEndLevel)
+        {
+            endLevelEvent.Raise();
+            Debug.Log("End of level");
         }
     }
 }

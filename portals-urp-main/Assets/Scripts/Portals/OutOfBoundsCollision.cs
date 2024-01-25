@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class OutOfBoundsCollision : MonoBehaviour
 {
+    public bool resetViaPortal = true;
+    public bool resetViaSpawnPoint = false;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Interactable"))
+        Debug.Log("Out of bounds");
+
+        if ((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Interactable")) && resetViaPortal)
         {
             PortalableObject portalableObject = FindObjectOfType<PortalableObject>();
             Transform lastPortalTf = portalableObject.lastPortalTf.transform;
@@ -22,9 +27,10 @@ public class OutOfBoundsCollision : MonoBehaviour
             }
         }
 
-        if (other.gameObject.CompareTag("Interactable"))
+        if (other.gameObject.CompareTag("Player") && resetViaSpawnPoint)
         {
-            //Destroy and respawn
+            FindObjectOfType<Restart>().RestartScene();
         }
+
     }
 }

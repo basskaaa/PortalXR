@@ -43,5 +43,16 @@ public class Restart : MonoBehaviour
         Time.timeScale = 1.0f;
         SceneSwapManager.Instance.SwapScene(scenes[sceneCount]);
         //portalGunAcquired.Raise();
+
+        GameManager.Instance.playerIsAlive = true;
+
+        if (FindObjectOfType<Acid>() != null) 
+        {
+            FindObjectOfType<Acid>().StopFloat();
+        }
+        if (FindObjectOfType<DeadScreen>() != null) 
+        {
+            FindObjectOfType<DeadScreen>().DisableDeathScreen();
+        }
     }
 }

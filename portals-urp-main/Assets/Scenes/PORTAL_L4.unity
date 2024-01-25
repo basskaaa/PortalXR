@@ -3892,6 +3892,7 @@ MonoBehaviour:
   sceneToUnload:
     _sceneAsset: {fileID: 0}
     _sceneName: 
+  isEndLevel: 0
 --- !u!65 &184958849
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10865,6 +10866,7 @@ MonoBehaviour:
   sceneToUnload:
     _sceneAsset: {fileID: 102900000, guid: ce9b1bfcb19c7484ea075433d9bbfba5, type: 3}
     _sceneName: PORTAL_L3
+  isEndLevel: 0
 --- !u!65 &580286525
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11196,7 +11198,7 @@ Transform:
   - {fileID: 19034124}
   - {fileID: 1864841541}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &599283605
 GameObject:
@@ -11255,6 +11257,7 @@ MonoBehaviour:
   sceneToUnload:
     _sceneAsset: {fileID: 0}
     _sceneName: 
+  isEndLevel: 0
 --- !u!65 &599283608
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15744,6 +15747,7 @@ MonoBehaviour:
   sceneToUnload:
     _sceneAsset: {fileID: 0}
     _sceneName: 
+  isEndLevel: 0
 --- !u!65 &871204856
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16710,6 +16714,7 @@ MonoBehaviour:
   sceneToUnload:
     _sceneAsset: {fileID: 0}
     _sceneName: 
+  isEndLevel: 0
 --- !u!65 &898936053
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19279,6 +19284,7 @@ MonoBehaviour:
   sceneToUnload:
     _sceneAsset: {fileID: 0}
     _sceneName: 
+  isEndLevel: 1
 --- !u!65 &1116778466
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19631,6 +19637,7 @@ MonoBehaviour:
   sceneToUnload:
     _sceneAsset: {fileID: 102900000, guid: 4053f614333870248a00dca6d9fb23d8, type: 3}
     _sceneName: PORTAL_L2
+  isEndLevel: 0
 --- !u!65 &1128937358
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35486,10 +35493,35 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 409817902}
     m_Modifications:
+    - target: {fileID: 4912949981711377880, guid: dad0d50f82b230d4daaf34050d152917,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.69254434
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912949981711377880, guid: dad0d50f82b230d4daaf34050d152917,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.14277205
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912949981711377880, guid: dad0d50f82b230d4daaf34050d152917,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6925423
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912949981711377880, guid: dad0d50f82b230d4daaf34050d152917,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.14277159
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912949981711377880, guid: dad0d50f82b230d4daaf34050d152917,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -23.297
+      objectReference: {fileID: 0}
     - target: {fileID: 5163462300917703113, guid: dad0d50f82b230d4daaf34050d152917,
         type: 3}
       propertyPath: force
-      value: 40
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7451662652098508327, guid: dad0d50f82b230d4daaf34050d152917,
         type: 3}
@@ -41191,8 +41223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b113deb7e68a9134ab209794ceb22c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnHere: 1
-  hasPortalGun: 1
+  spawnHere: 0
+  hasPortalGun: 0
 --- !u!4 &2137851246
 Transform:
   m_ObjectHideFlags: 0
@@ -41206,5 +41238,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}

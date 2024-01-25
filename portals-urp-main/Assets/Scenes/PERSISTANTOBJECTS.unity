@@ -133,6 +133,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1995167078873486098, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: scenes.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995167078873486098, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: scenes.Array.data[6]._sceneName
+      value: PORTAL_L6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995167078873486098, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: scenes.Array.data[6]._sceneAsset
+      value: 
+      objectReference: {fileID: 102900000, guid: 09c56ec81ee820b43862b00a9f2193b7,
+        type: 3}
     - target: {fileID: 2126993101376827613, guid: dd6dc1e624175ca488ec48574edd6df2,
         type: 3}
       propertyPath: maxLookAngle

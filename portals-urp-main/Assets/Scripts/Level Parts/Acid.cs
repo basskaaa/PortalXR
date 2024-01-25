@@ -10,16 +10,19 @@ public class Acid : MonoBehaviour
 
     [SerializeField] private GameEvent boxDestroyed;
     [SerializeField] private AudioClipHolder dissolveSound;
+    private ConstantForce force;
+    private GameObject player;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             playerDied.Raise();
-            other.gameObject.GetComponent<Rigidbody>().useGravity = false;
-            other.gameObject.AddComponent<ConstantForce>();
+            player = other.gameObject;
+            player.GetComponent<Rigidbody>().useGravity = false;
+            force = other.gameObject.AddComponent<ConstantForce>();
 
-            StartCoroutine(FloatBob(other.gameObject.GetComponent<ConstantForce>()));
+            StartCoroutine(FloatBob(force));
         }
 
         if (other.gameObject.CompareTag("Interactable"))
@@ -32,7 +35,7 @@ public class Acid : MonoBehaviour
         }
     }
 
-    private IEnumerator FloatBob(ConstantForce force)
+    public IEnumerator FloatBob(ConstantForce force)
     {
         if (force != null)
         {
@@ -42,5 +45,11 @@ public class Acid : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             StartCoroutine(FloatBob(force));
         }
+    }
+
+    public void StopFloat()
+    {
+        player.GetComponent<Rigidbody>().useGravity = true;
+        force.enabled = false;
     }
 }

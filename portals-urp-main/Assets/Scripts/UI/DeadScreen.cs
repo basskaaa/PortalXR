@@ -14,6 +14,14 @@ public class DeadScreen : MonoBehaviour
         restart = GetComponentInParent<Restart>();
     }
 
+    private void Update()
+    {
+        if (GameManager.Instance.playerIsAlive)
+        {
+            deathScreen.SetActive(false);
+        }
+    }
+
     public void EnableDeathScreen()
     {
         if (GameManager.Instance.playerCanDie)
@@ -38,5 +46,11 @@ public class DeadScreen : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quit game");
+    }
+
+    public void DisableDeathScreen()
+    {
+        deathScreen.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

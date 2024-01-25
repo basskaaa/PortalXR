@@ -175,11 +175,11 @@ public class PortalableObject : MonoBehaviour
         float downForce = rigidbody.velocity.magnitude;
         if (rigidbody.velocity.magnitude < 15)
         {
-            rigidbody.AddForce(WallPortal.forward * downForce * 300, ForceMode.Force);
+            rigidbody.AddForce(WallPortal.forward * downForce * 100, ForceMode.Force);
         }
         else
         {
-            rigidbody.AddForce(WallPortal.forward * downForce * 250, ForceMode.Force);
+            rigidbody.AddForce(WallPortal.forward * downForce * 80, ForceMode.Force);
         }
 
         // Swap portal references.
