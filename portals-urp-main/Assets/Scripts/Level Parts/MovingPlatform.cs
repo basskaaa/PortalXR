@@ -12,6 +12,11 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private bool isReturning = false;
     [SerializeField] private bool isActive = true;
     [SerializeField] private bool needsTwo = false;
+    [SerializeField] private bool hasMaterialChange = false;
+
+
+    [SerializeField] private Material stationaryMat;
+    [SerializeField] private Material activeMat;
 
     private int _targetWaypointIndex;
     private int activateCheck = 0;
@@ -25,9 +30,12 @@ public class MovingPlatform : MonoBehaviour
     private Transform _oldPlayerParent;
     private Transform _oldIntParent;
 
+    private MeshRenderer _meshRenderer;
+
     void Start()
     {
         TargetNextWaypoint();
+        _meshRenderer = GetComponent<MeshRenderer>();
     }
 
     void FixedUpdate()
@@ -45,6 +53,16 @@ public class MovingPlatform : MonoBehaviour
             {
                 TargetNextWaypoint();
             }
+
+            if (hasMaterialChange)
+            {
+            _meshRenderer.material = activeMat;
+            }
+        }
+
+        if (hasMaterialChange && !isActive)
+        {
+            _meshRenderer.material = stationaryMat;
         }
     }
 

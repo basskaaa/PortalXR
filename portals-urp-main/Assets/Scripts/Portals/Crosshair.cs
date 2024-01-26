@@ -36,4 +36,10 @@ public class Crosshair : MonoBehaviour
             outPortalImg.gameObject.SetActive(isPlaced);
         }
     }
+
+    public void ClearCrosshair()
+    {
+        inPortalImg.gameObject.SetActive(false);
+        outPortalImg.gameObject.SetActive(false);
+    }
 }

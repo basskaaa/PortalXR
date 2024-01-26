@@ -5243,6 +5243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e1be42282319047a51ef2f74616698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetViaPortal: 1
+  resetViaSpawnPoint: 0
 --- !u!65 &296123962
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5833,6 +5835,7 @@ MonoBehaviour:
   sceneToUnload:
     _sceneAsset: {fileID: 0}
     _sceneName: 
+  isEndLevel: 0
 --- !u!65 &333493679
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5921,6 +5924,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pool1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7349776931384372596, guid: edacce8e0fc4f15498dc3f232bab243f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9216752629399348925, guid: edacce8e0fc4f15498dc3f232bab243f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8365,6 +8378,7 @@ MonoBehaviour:
   sceneToUnload:
     _sceneAsset: {fileID: 0}
     _sceneName: 
+  isEndLevel: 0
 --- !u!65 &623950960
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8933,7 +8947,10 @@ MonoBehaviour:
   isRepeating: 0
   isReturning: 0
   isActive: 0
-  isFirstLevel: 0
+  needsTwo: 0
+  hasMaterialChange: 0
+  stationaryMat: {fileID: 0}
+  activeMat: {fileID: 0}
 --- !u!64 &648043103
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11813,7 +11830,10 @@ MonoBehaviour:
   isRepeating: 0
   isReturning: 0
   isActive: 1
-  isFirstLevel: 0
+  needsTwo: 0
+  hasMaterialChange: 0
+  stationaryMat: {fileID: 0}
+  activeMat: {fileID: 0}
 --- !u!64 &895666978
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26144,7 +26164,10 @@ MonoBehaviour:
   isRepeating: 1
   isReturning: 0
   isActive: 1
-  isFirstLevel: 0
+  needsTwo: 0
+  hasMaterialChange: 0
+  stationaryMat: {fileID: 0}
+  activeMat: {fileID: 0}
 --- !u!64 &1754067126
 MeshCollider:
   m_ObjectHideFlags: 0

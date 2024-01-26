@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayEnding : MonoBehaviour
 {
     [SerializeField] private AudioClipHolder outroMusic;
-    private GameObject credits;
+    private Credits credits;
+    private GameObject scroll;
 
     private void Start()
     {
-        credits = FindObjectOfType<Credits>().credits;
+        credits = FindObjectOfType<Credits>();
+        scroll = credits.credits;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -17,7 +19,15 @@ public class PlayEnding : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             AudioManager.Instance.PlayMusic(outroMusic.AudioClip, outroMusic.Volume);
-            credits.SetActive(true);
+            StartCoroutine(PlayCredits());
         }
+    }
+
+    private IEnumerator PlayCredits()
+    {
+        yield return new WaitForSeconds(5f);
+        scroll.SetActive(true);
+        credits.GetComponent<Animator>().SetTrigger("Play");
+
     }
 }

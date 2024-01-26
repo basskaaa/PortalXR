@@ -1,11 +1,14 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DeadScreen : MonoBehaviour
 {
     [SerializeField] private GameObject deathScreen;
+    [SerializeField] private Image deathMask;
 
     private Restart restart;
 
@@ -26,6 +29,7 @@ public class DeadScreen : MonoBehaviour
     {
         if (GameManager.Instance.playerCanDie)
         {
+            deathMask.DOFade(0.2f, 3f);
             StartCoroutine(WaitToEnable());
         }
     }
@@ -39,6 +43,7 @@ public class DeadScreen : MonoBehaviour
 
     public void RestartGame()
     {
+        DisableDeathScreen();
         restart.RestartScene();
     }
 
@@ -50,6 +55,7 @@ public class DeadScreen : MonoBehaviour
 
     public void DisableDeathScreen()
     {
+        deathMask.DOFade(0f, 0f);
         deathScreen.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
     }

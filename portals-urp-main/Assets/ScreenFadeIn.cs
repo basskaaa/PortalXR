@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ScreenFadeIn : MonoBehaviour
 {
     RawImage startLevelMask;
+    public Image aperture;
 
     private void Start()
     {
@@ -23,7 +24,9 @@ public class ScreenFadeIn : MonoBehaviour
     private IEnumerator FadeInFadeOut()
     {
         startLevelMask.DOFade(1, 3f);
+        aperture.DOFade(0.3f, 3f);
         yield return new WaitForSeconds(4f);
         startLevelMask.DOFade(0, 6f);
+        aperture.DOFade(0, 1f);
     }
 }

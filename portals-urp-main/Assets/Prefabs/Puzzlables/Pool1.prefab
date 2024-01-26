@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6935101847399277791}
   - component: {fileID: 5131537081495583155}
   - component: {fileID: 9216752629399348925}
+  - component: {fileID: 7349776931384372596}
   m_Layer: 0
   m_Name: Pool1
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5175236945329392882}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 29.500492, y: 12.739468, z: 27.948826}
-  m_LocalScale: {x: 18.362135, y: 4, z: 5.8318}
+  m_LocalScale: {x: 24.820097, y: 4.158, z: 10.509486}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -120,3 +121,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDied: {fileID: 11400000, guid: 4f6d7d63bce6d5747b381819527e38b5, type: 2}
   floatGrav: 1.5
+  boxDestroyed: {fileID: 11400000, guid: 516109fa8b3eb3548943cc0254538ab4, type: 2}
+  dissolveSound: {fileID: 11400000, guid: a5c0e0bbe2ab11c498e631908392b927, type: 2}
+--- !u!114 &7349776931384372596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5175236945329392882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 069e564f7c384c04dafed5cc9b0e3c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: db22e77dc0c30aa4caa70380b2984799, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9216752629399348925}
+        m_TargetAssemblyTypeName: Acid, Assembly-CSharp
+        m_MethodName: StopFloat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

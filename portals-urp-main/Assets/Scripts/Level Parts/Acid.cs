@@ -13,16 +13,25 @@ public class Acid : MonoBehaviour
     private ConstantForce force;
     private GameObject player;
 
+
+    private void Start()
+    {
+        StopFloat();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            playerDied.Raise();
-            player = other.gameObject;
-            player.GetComponent<Rigidbody>().useGravity = false;
-            force = other.gameObject.AddComponent<ConstantForce>();
+            FindObjectOfType<Restart>().RestartScene();
 
-            StartCoroutine(FloatBob(force));
+
+        //    playerDied.Raise();
+        //    player = other.gameObject;
+        //    player.GetComponent<Rigidbody>().useGravity = false;
+        //    force = other.gameObject.AddComponent<ConstantForce>();
+        //
+        //    StartCoroutine(FloatBob(force));
         }
 
         if (other.gameObject.CompareTag("Interactable"))
@@ -49,7 +58,8 @@ public class Acid : MonoBehaviour
 
     public void StopFloat()
     {
-        player.GetComponent<Rigidbody>().useGravity = true;
-        force.enabled = false;
+        //player = FindObjectOfType<Player>().gameObject;
+        //player.GetComponent<Rigidbody>().useGravity = true;
+        //force.enabled = false;
     }
 }

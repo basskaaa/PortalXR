@@ -37,6 +37,9 @@ public class PauseScreen : MonoBehaviour
 
     public void RestartGame()
     {
+        PauseMenu.SetActive(false);
+        FindObjectOfType<PlayerCamera>().cameraCanMove = true;
+        Cursor.lockState = CursorLockMode.Locked;
         restart.RestartScene();
     }
 

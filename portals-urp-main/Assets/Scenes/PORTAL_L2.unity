@@ -964,7 +964,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 34.7
+  m_Intensity: 88.6
   m_Range: 58.8
   m_SpotAngle: 145.5
   m_InnerSpotAngle: 21.80208
@@ -2467,6 +2467,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &632790066 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7843844331004952108, guid: 2964200f296ca664ca0d9bc4d3f45407,
+    type: 3}
+  m_PrefabInstance: {fileID: 653487020}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &633024045
 Mesh:
   m_ObjectHideFlags: 0
@@ -2632,6 +2638,89 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &653487020
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 911292626}
+    m_Modifications:
+    - target: {fileID: 1561410965543564813, guid: 2964200f296ca664ca0d9bc4d3f45407,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 19e78b46646eac04d8ed21860f9f63c4, type: 2}
+    - target: {fileID: 2270943679461947144, guid: 2964200f296ca664ca0d9bc4d3f45407,
+        type: 3}
+      propertyPath: m_Name
+      value: Decal Projector
+      objectReference: {fileID: 0}
+    - target: {fileID: 2270943679461947144, guid: 2964200f296ca664ca0d9bc4d3f45407,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843844331004952108, guid: 2964200f296ca664ca0d9bc4d3f45407,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843844331004952108, guid: 2964200f296ca664ca0d9bc4d3f45407,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843844331004952108, guid: 2964200f296ca664ca0d9bc4d3f45407,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843844331004952108, guid: 2964200f296ca664ca0d9bc4d3f45407,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -30.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843844331004952108, guid: 2964200f296ca664ca0d9bc4d3f45407,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071078
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843844331004952108, guid: 2964200f296ca664ca0d9bc4d3f45407,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0000009909271
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843844331004952108, guid: 2964200f296ca664ca0d9bc4d3f45407,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071058
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843844331004952108, guid: 2964200f296ca664ca0d9bc4d3f45407,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0000009834765
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843844331004952108, guid: 2964200f296ca664ca0d9bc4d3f45407,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843844331004952108, guid: 2964200f296ca664ca0d9bc4d3f45407,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843844331004952108, guid: 2964200f296ca664ca0d9bc4d3f45407,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2964200f296ca664ca0d9bc4d3f45407, type: 3}
 --- !u!43 &666712331
 Mesh:
   m_ObjectHideFlags: 0
@@ -4379,6 +4468,7 @@ Transform:
   - {fileID: 1163723165}
   - {fileID: 777316011}
   - {fileID: 829648167}
+  - {fileID: 632790066}
   m_Father: {fileID: 342548576}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17606,6 +17696,9 @@ MonoBehaviour:
   isReturning: 0
   isActive: 0
   needsTwo: 0
+  hasMaterialChange: 0
+  stationaryMat: {fileID: 0}
+  activeMat: {fileID: 0}
 --- !u!114 &1595121708767062664
 MonoBehaviour:
   m_ObjectHideFlags: 0
