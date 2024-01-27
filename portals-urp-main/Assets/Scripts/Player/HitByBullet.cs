@@ -13,7 +13,7 @@ public class HitByBullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             hitCount++;
-            Debug.Log("Hit");
+            //Debug.Log("Hit");
         }
     }
 
@@ -22,6 +22,13 @@ public class HitByBullet : MonoBehaviour
         if (hitCount > maxHitCount) 
         {
             playerDead.Raise();
+            //Debug.Log(hitCount.ToString());
         }
+    }
+
+    public void ResetHitCount()
+    {
+        hitCount = 0;
+        //Debug.Log("Hit count reset");
     }
 }

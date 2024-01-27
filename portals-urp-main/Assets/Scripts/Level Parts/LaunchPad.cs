@@ -32,9 +32,7 @@ public class LaunchPad : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var obj = other.GetComponent<PortalableObject>();
-
-        if (obj != null)
+        if (other.gameObject.CompareTag("Player"))
         {
             animator.SetTrigger("Launch");
             //other.GetComponent<Rigidbody>().AddForce(direction.transform.forward * force, ForceMode.Force);

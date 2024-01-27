@@ -51,7 +51,7 @@ public class TurretBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             inFireRange = true;
-            Debug.Log("In range");
+            //Debug.Log("In range");
         }
     }
 
@@ -73,7 +73,7 @@ public class TurretBehaviour : MonoBehaviour
 
         else
         {
-            Debug.Log(transform.rotation.eulerAngles.x);
+            //Debug.Log(transform.rotation.eulerAngles.x);
             return false;
         }
     }

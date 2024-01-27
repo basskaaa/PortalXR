@@ -8,6 +8,7 @@ public class PortalResetCollider : MonoBehaviour
     [SerializeField] private AudioClipHolder resetPortalsAudio;
     [SerializeField] private AudioClipHolder dissolveAudio;
     [SerializeField] private float delay = 0f;
+    [SerializeField] private GameEvent destroyBox;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,11 +17,17 @@ public class PortalResetCollider : MonoBehaviour
             StartCoroutine(ClearPortals());
         }
 
-        if (other.gameObject.CompareTag("Interactable"))
+        if (other.gameObject.GetComponent<HoldableItem>() != null && other.gameObject.GetComponent<HoldableItem>().isBox)
         {
-            Destroy(other.gameObject, 0.3f);
+            destroyBox.Raise();
             AudioManager.Instance.PlaySound(dissolveAudio.AudioClip, dissolveAudio.Volume);
+            other.GetComponent<HoldableItem>().DestroyHoldable();
+        }
 
+        if (other.gameObject.GetComponent<HoldableItem>() != null && other.gameObject.GetComponent<HoldableItem>().isTurret)
+        {
+            AudioManager.Instance.PlaySound(dissolveAudio.AudioClip, dissolveAudio.Volume);
+            other.GetComponent<HoldableItem>().DestroyHoldable();
         }
     }
 

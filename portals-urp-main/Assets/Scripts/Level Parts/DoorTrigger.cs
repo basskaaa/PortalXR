@@ -60,7 +60,7 @@ public class DoorTrigger : MonoBehaviour
         if (isEndLevel)
         {
             endLevelEvent.Raise();
-            Debug.Log("End of level");
+            //Debug.Log("End of level");
         }
     }
 }

@@ -169,7 +169,7 @@ public class PortalableObject : MonoBehaviour
         // Update rotation of object.
         transform.rotation = WallPortal.rotation;
         //Debug.Log(outTransform.rotation);
-        Debug.Log("Exit floor to wall portal");
+        //Debug.Log("Exit floor to wall portal");
 
         // Update velocity of rigidbody.
         float downForce = rigidbody.velocity.magnitude;

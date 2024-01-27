@@ -11,8 +11,8 @@ public class HoldableItem : MonoBehaviour, IInteractable
 
     public bool isHeld = false;
 
-    [SerializeField] private bool isTurret;
-    [SerializeField] private bool isBox;
+    public bool isTurret;
+    public bool isBox;
 
     [SerializeField] private AudioClipHolder[] impactSound;
     [SerializeField] private GameEvent boxPickedUp;
@@ -125,6 +125,18 @@ public class HoldableItem : MonoBehaviour, IInteractable
     {
         SetDrop();
         itemCollider.enabled = false;
+        //Portal[] portals = FindObjectsByType<Portal>(FindObjectsSortMode.InstanceID);
+        //if (portals != null)
+        //{
+        //    if (portals[0].portalObjects.Contains(gameObject.GetComponent<PortalableObject>()))
+        //    {
+        //        portals[0].portalObjects.Remove(gameObject.GetComponent<PortalableObject>());
+        //    }
+        //    if (portals[1].portalObjects.Contains(gameObject.GetComponent<PortalableObject>()))
+        //    {
+        //        portals[1].portalObjects.Remove(gameObject.GetComponent<PortalableObject>());
+        //    }
+        //}
         Destroy(gameObject, 0.5f);
     }
 }

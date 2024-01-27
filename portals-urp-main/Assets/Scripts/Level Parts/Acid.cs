@@ -13,53 +13,25 @@ public class Acid : MonoBehaviour
     private ConstantForce force;
     private GameObject player;
 
-
-    private void Start()
-    {
-        StopFloat();
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            FindObjectOfType<Restart>().RestartScene();
-
-
-        //    playerDied.Raise();
-        //    player = other.gameObject;
-        //    player.GetComponent<Rigidbody>().useGravity = false;
-        //    force = other.gameObject.AddComponent<ConstantForce>();
-        //
-        //    StartCoroutine(FloatBob(force));
+            FindObjectOfType<Restart>().ResetPos();
         }
 
-        if (other.gameObject.CompareTag("Interactable"))
+        if (other.gameObject.GetComponent<HoldableItem>() != null && other.gameObject.GetComponent<HoldableItem>().isBox)
         {
             boxDestroyed.Raise();
             AudioManager.Instance.PlaySound(dissolveSound.AudioClip, dissolveSound.Volume);
-            other.gameObject.AddComponent<ConstantForce>();
-            StartCoroutine(FloatBob(other.gameObject.GetComponent<ConstantForce>()));
             other.GetComponent<HoldableItem>().DestroyHoldable();
         }
-    }
 
-    public IEnumerator FloatBob(ConstantForce force)
-    {
-        if (force != null)
+        if (other.gameObject.GetComponent<HoldableItem>() != null && other.gameObject.GetComponent<HoldableItem>().isTurret)
         {
-            force.force = new Vector3(0, floatGrav, 0);
-            yield return new WaitForSeconds(0.5f);
-            force.force = new Vector3(0, -floatGrav * 2, 0);
-            yield return new WaitForSeconds(0.5f);
-            StartCoroutine(FloatBob(force));
-        }
-    }
+            AudioManager.Instance.PlaySound(dissolveSound.AudioClip, dissolveSound.Volume);
 
-    public void StopFloat()
-    {
-        //player = FindObjectOfType<Player>().gameObject;
-        //player.GetComponent<Rigidbody>().useGravity = true;
-        //force.enabled = false;
+            other.GetComponent<HoldableItem>().DestroyHoldable();
+        }
     }
 }

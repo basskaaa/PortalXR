@@ -26,7 +26,7 @@ public class Restart : MonoBehaviour
 
     public void NextScene()
     {
-        Debug.Log("Next scene");
+        //Debug.Log("Next scene");
 
         sceneCount++;
     }
@@ -50,13 +50,14 @@ public class Restart : MonoBehaviour
 
         GameManager.Instance.playerIsAlive = true;
 
-        if (FindObjectOfType<Acid>() != null) 
-        {
-            FindObjectOfType<Acid>().StopFloat();
-        }
         if (FindObjectOfType<DeadScreen>() != null) 
         {
             FindObjectOfType<DeadScreen>().DisableDeathScreen();
         }
+    }
+
+    public void ResetPos()
+    {
+        spawnHere.SetPosition();
     }
 }

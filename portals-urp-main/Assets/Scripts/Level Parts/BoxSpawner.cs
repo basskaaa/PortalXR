@@ -11,7 +11,7 @@ public class BoxSpawner : MonoBehaviour
 
     public void SpawnBox()
     {
-        Debug.Log("Box spawn");
+        //Debug.Log("Box spawn");
 
         Box currentBox = FindObjectOfType<Box>();
 

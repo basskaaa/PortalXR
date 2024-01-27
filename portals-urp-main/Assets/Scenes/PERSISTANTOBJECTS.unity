@@ -148,6 +148,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: DeadScreen, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 2574742267206167045, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2620104496159084671, guid: dd6dc1e624175ca488ec48574edd6df2,
         type: 3}
       propertyPath: m_RootOrder
@@ -203,10 +208,44 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2901762841660536059, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: jumpPower
+      value: 8.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189013224310711251, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220216730586919658, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: m_text
+      value: 'Mouse - Look
+
+        WASD - Move
+
+        L Click- Blue portal
+
+        R
+        Click - Orange portal
+
+        E - Interact
+
+        Space - Jump
+
+        Esc
+        - Pause'
+      objectReference: {fileID: 0}
     - target: {fileID: 3790509055617370746, guid: dd6dc1e624175ca488ec48574edd6df2,
         type: 3}
       propertyPath: m_Name
       value: PERSISTANT
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957832481075811048, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6213347223463691522, guid: dd6dc1e624175ca488ec48574edd6df2,
         type: 3}
@@ -228,10 +267,108 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6679591882571625448, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679591882571625448, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679591882571625448, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1242120706}
+    - target: {fileID: 6679591882571625448, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679591882571625448, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ResetHitCount
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679591882571625448, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: HitByBullet, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679591882571625448, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011882586753064189, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5.9429417
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775465067287320991, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: m_text
+      value: 'Mouse - Look
+
+        WASD - Move
+
+        L Click- Blue portal
+
+        R
+        Click - Orange portal
+
+        E - Interact
+
+        Space - Jump
+
+        Esc
+        - Pause'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801277956255792767, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801277956255792767, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801277956255792767, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1242120706}
+    - target: {fileID: 7801277956255792767, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801277956255792767, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ResetHitCount
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801277956255792767, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: HitByBullet, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801277956255792767, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5278359464277708498, guid: dd6dc1e624175ca488ec48574edd6df2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1242120714}
   m_SourcePrefab: {fileID: 100100000, guid: dd6dc1e624175ca488ec48574edd6df2, type: 3}
 --- !u!114 &321473524 stripped
 MonoBehaviour:
@@ -245,3 +382,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c109df4b1fd834e88deafdfe185138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1242120702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5278359464277708498, guid: dd6dc1e624175ca488ec48574edd6df2,
+    type: 3}
+  m_PrefabInstance: {fileID: 321473523}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1242120706 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6355798223085255485, guid: dd6dc1e624175ca488ec48574edd6df2,
+    type: 3}
+  m_PrefabInstance: {fileID: 321473523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242120702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77408d1f664ae4c48b869e165d887d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1242120714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242120702}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 069e564f7c384c04dafed5cc9b0e3c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 4f6d7d63bce6d5747b381819527e38b5, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1242120706}
+        m_TargetAssemblyTypeName: HitByBullet, Assembly-CSharp
+        m_MethodName: ResetHitCount
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

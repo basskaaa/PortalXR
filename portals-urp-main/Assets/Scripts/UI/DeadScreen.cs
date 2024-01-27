@@ -43,8 +43,9 @@ public class DeadScreen : MonoBehaviour
 
     public void RestartGame()
     {
+        GameManager.Instance.playerIsAlive = true;
         DisableDeathScreen();
-        restart.RestartScene();
+        restart.ResetPos();
     }
 
     public void QuitGame()
@@ -55,6 +56,7 @@ public class DeadScreen : MonoBehaviour
 
     public void DisableDeathScreen()
     {
+        Debug.Log("disabled death screen");
         deathMask.DOFade(0f, 0f);
         deathScreen.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;

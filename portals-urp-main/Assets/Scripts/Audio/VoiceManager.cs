@@ -35,12 +35,12 @@ public class VoiceManager : Singleton<VoiceManager>
             voiceSource.clip = voiceHolder.VoiceLine[i];
             voiceSource.Play();
             yield return new WaitWhile(() => voiceSource.isPlaying);
-            Debug.Log(voiceHolder.VoiceLine[i].name);
+            //Debug.Log(voiceHolder.VoiceLine[i].name);
 
             if (voiceHolder.VoiceLineDelay.Length > 0)
             {
                 yield return new WaitForSeconds(voiceHolder.VoiceLineDelay[i]);
-                Debug.Log(voiceHolder.VoiceLineDelay[i]);
+                //Debug.Log(voiceHolder.VoiceLineDelay[i]);
             }
         }
         voiceHolders.Remove(voiceHolder);

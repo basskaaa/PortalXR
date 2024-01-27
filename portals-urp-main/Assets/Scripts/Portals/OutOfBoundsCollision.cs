@@ -9,6 +9,21 @@ public class OutOfBoundsCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        OutOfBounds(other);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        //OutOfBounds(other);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        OutOfBounds(other);
+    }
+
+    private void OutOfBounds(Collider other)
+    {
         Debug.Log("Out of bounds");
 
         if ((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Interactable")) && resetViaPortal)
@@ -17,7 +32,7 @@ public class OutOfBoundsCollision : MonoBehaviour
             Transform lastPortalTf = portalableObject.lastPortalTf.transform;
             Debug.Log(other.gameObject.name + " out of bounds");
 
-            if (!portalableObject.IsPortalOnCeiling()) 
+            if (!portalableObject.IsPortalOnCeiling())
             {
                 other.gameObject.transform.position = portalableObject.lastPortalTf.transform.position;
             }
@@ -29,8 +44,7 @@ public class OutOfBoundsCollision : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player") && resetViaSpawnPoint)
         {
-            FindObjectOfType<Restart>().RestartScene();
+            FindObjectOfType<Restart>().ResetPos();
         }
-
     }
 }

@@ -20,7 +20,7 @@ public class Portal : MonoBehaviour
     [SerializeField]
     private Transform testTransform;
 
-    private List<PortalableObject> portalObjects = new List<PortalableObject>();
+    public List<PortalableObject> portalObjects = new List<PortalableObject>();
     public bool IsPlaced { get; private set; } = false;
     private Collider wallCollider;
 
@@ -46,6 +46,7 @@ public class Portal : MonoBehaviour
         for (int i = 0; i < portalObjects.Count; ++i)
         {
             Vector3 objPos = transform.InverseTransformPoint(portalObjects[i].transform.position);
+            //Debug.Log(portalObjects[i].name);
 
             if (objPos.z > 0.0f)
             {
@@ -57,6 +58,12 @@ public class Portal : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var obj = other.GetComponent<PortalableObject>();
+        //if (obj == null)
+        //{
+        //    Debug.Log(obj.name + "is null");
+        //    obj = FindObjectOfType<Player>().gameObject.GetComponent<PortalableObject>();
+        //}
+
         if (obj != null && GameManager.Instance.bothPortalsActive)
         {
             if (other.GetComponent<HoldableItem>() != null)

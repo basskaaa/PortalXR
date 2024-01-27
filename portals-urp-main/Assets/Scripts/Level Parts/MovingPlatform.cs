@@ -72,7 +72,7 @@ public class MovingPlatform : MonoBehaviour
         _targetWaypointIndex = _waypointPath.GetNextWaypointIndex(_targetWaypointIndex);
         if (isReturning && _targetWaypointIndex == 0)
         {
-            Debug.Log("Platform reached destination");
+            //Debug.Log("Platform reached destination");
             isActive = false;
             return;
         }
@@ -108,7 +108,7 @@ public class MovingPlatform : MonoBehaviour
             if (_oldPlayerParent != null) 
             {
                 other.transform.SetParent(_oldPlayerParent);
-                Debug.Log(other.name + " parent is " + other.transform.parent);
+                //Debug.Log(other.name + " parent is " + other.transform.parent);
                 if (other.transform.parent != _oldPlayerParent)
                 {
                     Debug.Log("parent incorrect");

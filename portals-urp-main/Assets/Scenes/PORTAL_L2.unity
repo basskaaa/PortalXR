@@ -4097,7 +4097,7 @@ GameObject:
   - component: {fileID: 910515623}
   - component: {fileID: 910515622}
   - component: {fileID: 910515621}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18720,8 +18720,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e1be42282319047a51ef2f74616698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetViaPortal: 1
-  resetViaSpawnPoint: 0
+  resetViaPortal: 0
+  resetViaSpawnPoint: 1
 --- !u!4 &3826822363536916231
 Transform:
   m_ObjectHideFlags: 0

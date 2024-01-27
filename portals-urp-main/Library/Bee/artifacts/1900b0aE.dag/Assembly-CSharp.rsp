@@ -393,6 +393,7 @@
 "Assets/Credits.cs"
 "Assets/EnableOnTrigger.cs"
 "Assets/EndLevelMask.cs"
+"Assets/LoadElevator.cs"
 "Assets/MyPackages/ModularFirstPersonController/FirstPersonController/FirstPersonController.cs"
 "Assets/PlayEnding.cs"
 "Assets/PlayerCamera.cs"
