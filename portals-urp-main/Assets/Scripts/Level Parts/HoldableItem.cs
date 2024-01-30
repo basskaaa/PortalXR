@@ -20,6 +20,8 @@ public class HoldableItem : MonoBehaviour, IInteractable
     private bool firstFall = false;
 
     private Transform _oldParent;
+    public Portal[] portals;
+
 
     public void OnInteract()
     {
@@ -40,6 +42,7 @@ public class HoldableItem : MonoBehaviour, IInteractable
         itemCollider = GetComponent<Collider>();
         holdPosition = FindObjectOfType<ItemHoldPosition>().transform;
         turretHoldPosition = FindObjectOfType<TurretHoldPos>().transform;
+        portals = FindObjectsByType<Portal>(FindObjectsSortMode.InstanceID);
     }
 
     private void Update()
@@ -123,20 +126,28 @@ public class HoldableItem : MonoBehaviour, IInteractable
 
     public void DestroyHoldable()
     {
-        SetDrop();
-        itemCollider.enabled = false;
-        //Portal[] portals = FindObjectsByType<Portal>(FindObjectsSortMode.InstanceID);
+        Destroy(gameObject, 0.5f);
+        //SetDrop();
+        //itemCollider.enabled = false;
         //if (portals != null)
         //{
-        //    if (portals[0].portalObjects.Contains(gameObject.GetComponent<PortalableObject>()))
+        //    if (portals[0] == null && portals[1] == null)
+        //    {
+        //        Debug.Log("Warning");
+        //        gameObject.SetActive(false);
+        //        return;
+        //    }
+        //    if (portals[0] != null && portals[0].portalObjects.Contains(gameObject.GetComponent<PortalableObject>()))
         //    {
         //        portals[0].portalObjects.Remove(gameObject.GetComponent<PortalableObject>());
         //    }
-        //    if (portals[1].portalObjects.Contains(gameObject.GetComponent<PortalableObject>()))
+        //    if (portals[1] != null && portals[1].portalObjects.Contains(gameObject.GetComponent<PortalableObject>()))
         //    {
         //        portals[1].portalObjects.Remove(gameObject.GetComponent<PortalableObject>());
         //    }
         //}
-        Destroy(gameObject, 0.5f);
+        //else
+        //{
+        //}
     }
 }

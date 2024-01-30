@@ -45,12 +45,15 @@ public class Portal : MonoBehaviour
 
         for (int i = 0; i < portalObjects.Count; ++i)
         {
-            Vector3 objPos = transform.InverseTransformPoint(portalObjects[i].transform.position);
-            //Debug.Log(portalObjects[i].name);
-
-            if (objPos.z > 0.0f)
+            if (portalObjects[i] != null)
             {
-                portalObjects[i].Warp();
+                Vector3 objPos = transform.InverseTransformPoint(portalObjects[i].transform.position);
+                //Debug.Log(portalObjects[i].name);
+
+                if (objPos.z > 0.0f)
+                {
+                    portalObjects[i].Warp();
+                }
             }
         }
     }
